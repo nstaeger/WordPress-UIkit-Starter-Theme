@@ -3,6 +3,7 @@
 class Walker_UIKIT extends Walker {
 
     private $has_children = false;
+    
     /**
      * What the class handles.
      *
@@ -15,6 +16,7 @@ class Walker_UIKIT extends Walker {
         'taxonomy',
         'custom'
     );
+    
     /**
      * Database fields to use.
      *
@@ -27,6 +29,7 @@ class Walker_UIKIT extends Walker {
         'parent' => 'menu_item_parent',
         'id' => 'db_id'
     );
+    
     /**
      * Starts the list before the elements are added.
      *

@@ -8,8 +8,6 @@
  * @since 2014-08-31
  */
 
-require('php/walker/uikit-menu-walker.php');
-
 
 ?><!DOCTYPE html>
 <!--[if IE 7]>
@@ -24,7 +22,7 @@ require('php/walker/uikit-menu-walker.php');
 <head>
     <meta charset="<?php bloginfo( 'charset' ); ?>" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title><?php wp_title( '|', true, 'right' ); ?></title>
+    <title><?php wp_title('-', true, 'right'); ?> <?php echo get_bloginfo('name', 'display'); ?></title>
     <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
 
     <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/uikit.min.css">
@@ -38,7 +36,7 @@ require('php/walker/uikit-menu-walker.php');
 
     <header id="header" class="uk-margin-large-top">
         <div class="uk-container uk-container-center">
-            <h1><a href="<?php echo esc_url( home_url( '/' ) ); ?>" title="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>" class="uk-link-reset"><?php bloginfo( 'name' ); ?></a></h1>
+            <h1><a href="<?php echo esc_url(home_url('/')); ?>" title="<?php echo esc_attr(get_bloginfo('name', 'display')); ?>" class="uk-link-reset"><?php bloginfo( 'name' ); ?></a></h1>
             <span><?php bloginfo( 'description' ); ?></span>
         </div>
     </header>
@@ -47,15 +45,13 @@ require('php/walker/uikit-menu-walker.php');
         <div class="uk-container uk-container-center">
             <?php
                 wp_nav_menu(array(
+                    'menu' => 'main',
                     'theme_location' => 'main',
-                    'walker' => new Walker_UIKIT
+                    'menu_class' => 'uk-navbar-nav uk-hidden-small',
+                    'depth' => 2,
+                    'walker' => new WordpressUikitMenuWalker()
                 ));
             ?>
-            <ul class="uk-navbar-nav uk-hidden-small">
-                <li><a href="#">Overview</a></li>
-                <li class="uk-active"><a href="page.html">Page</a></li>
-                <li><a href="#">Article</a></li>
-            </ul>
             <a href="#offcanvas-menu" class="uk-navbar-toggle uk-visible-small" data-uk-offcanvas></a>
         </div>
     </nav>

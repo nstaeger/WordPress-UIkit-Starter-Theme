@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>UIkit-starter - Page</title>
         <link rel="stylesheet" href="../css/uikit.min.css">
-        <script src="../js/jquery-1.11.0.min.js"></script>
+        <script src="../js/jquery-1.11.1.min.js"></script>
         <script src="../js/uikit.min.js"></script>
         
         <!-- Just for testing -->
@@ -29,6 +29,16 @@
                     <li><a href="#">Overview</a></li>
                     <li class="uk-active"><a href="page.html">Page</a></li>
                     <li><a href="#">Article</a></li>
+                    <li class="uk-parent" data-uk-dropdown="">
+                        <a href="#">Parent</a>
+                        <div class="uk-dropdown uk-dropdown-navbar">
+                            <ul class="uk-nav uk-nav-navbar">
+                                <li><a href="#">Child 1</a></li>
+                                <li><a href="#">Child 2</a></li>
+                                <li><a href="#">Child 3</a></li>
+                            </ul>
+                        </div>
+                    </li>
                 </ul>
                 <a href="#offcanvas-menu" class="uk-navbar-toggle uk-visible-small" data-uk-offcanvas></a>
             </div>
