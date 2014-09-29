@@ -9,14 +9,30 @@
 class WordpressUikitMenuWalker extends Walker_Nav_Menu
 {
 
+    private $_type;
+
+    /**
+     * @param  string $type
+     *                 Type of the Navigation. Possible values 'navbar', 'offcanvas'
+     */
+    public function __construct($type = 'navbar')
+    {
+        $this->_type = $type;
+    }
+
     /**
      * @see Walker_Nav_Menu::start_el()
      *
-     * @param string $output Passed by reference. Used to append additional content.
-     * @param object $item   Menu item data object.
-     * @param int    $depth  Depth of menu item. Used for padding.
-     * @param array  $args   An array of arguments. @see wp_nav_menu()
-     * @param int    $id     Current item ID.
+     * @param string $output
+     *                Passed by reference. Used to append additional content.
+     * @param object $item
+     *                Menu item data object.
+     * @param int $depth
+     *                Depth of menu item. Used for padding.
+     * @param array $args
+     *                An array of arguments. @see wp_nav_menu()
+     * @param int $id
+     *                Current item ID.
      */
     public function start_el(&$output, $item, $depth = 0, $args = array(), $current_object_id = 0) 
     {
@@ -48,7 +64,7 @@ class WordpressUikitMenuWalker extends Walker_Nav_Menu
         // if this element has children
         if ($this->has_children) {
             $li_classes[] = 'uk-parent';
-            $li_attributes[] = 'data-uk-dropdown=""';
+            if ($this->_type == 'navbar') $li_attributes[] = 'data-uk-dropdown=""';
         }
 
         // apply filters
@@ -74,17 +90,23 @@ class WordpressUikitMenuWalker extends Walker_Nav_Menu
         $output .= $indent . '<li ' . implode(" ", $li_attributes) . '>' . $link . "\n";
 
         if ($this->has_children && $depth == 0) {
-            $output .= $indent . '<div class="uk-dropdown uk-dropdown-navbar">' . "\n";
+            if ($this->_type == 'navbar') {
+                $output .= $indent . '<div class="uk-dropdown uk-dropdown-navbar">' . "\n";
+            }
         }
     }
 
     /**
      * @see Walker_Nav_Menu::end_el()
      *
-     * @param string $output Passed by reference. Used to append additional content.
-     * @param object $item   Page data object. Not used.
-     * @param int    $depth  Depth of page. Not Used.
-     * @param array  $args   An array of arguments. @see wp_nav_menu()
+     * @param string $output
+     *                Passed by reference. Used to append additional content.
+     * @param object $item  
+     *                Page data object. Not used.
+     * @param int $depth
+     *                Depth of page. Not Used.
+     * @param array $args
+     *                An array of arguments. @see wp_nav_menu()
      */
     function end_el(&$output, $item, $depth = 0, $args = array())
     {
@@ -93,7 +115,9 @@ class WordpressUikitMenuWalker extends Walker_Nav_Menu
         $has_children = in_array('menu-item-has-children', $item->classes);
 
         if ($has_children && $depth == 0) {
-            $output .= $indent . '</div>' . "\n";
+            if ($this->_type == 'navbar') {
+                $output .= $indent . '</div>' . "\n";
+            }
         }
 
         $output .= $indent . '</li>' . "\n";
@@ -102,28 +126,44 @@ class WordpressUikitMenuWalker extends Walker_Nav_Menu
     /**
      * @see Walker_Nav_Menu::start_lvl()
      *
-     * @param string $output Passed by reference. Used to append additional content.
-     * @param int    $depth  Depth of menu item. Used for padding.
-     * @param array  $args   An array of arguments. @see wp_nav_menu()
+     * @param string $output
+     *                Passed by reference. Used to append additional content.
+     * @param int $depth
+     *                Depth of menu item. Used for padding.
+     * @param array $args
+     *                An array of arguments. @see wp_nav_menu()
      */
     public function start_lvl(&$output, $depth = 0, $args = array())
     {
         $indent = str_repeat("\t", $depth);
 
-        $output .= $indent . '<ul class="uk-nav uk-nav-navbar">' . "\n";
+        if ($this->_type == 'navbar') {
+            $output .= $indent . '<ul class="uk-nav uk-nav-navbar">' . "\n";
+        }
+        else if ($this->_type == 'offcanvas') {
+            $output .= $indent . '<ul class="uk-nav-sub">' . "\n";
+        }
     }
 
     /**
      * @see Walker_Nav_Menu::end_lvl()
      *
-     * @param string $output Passed by reference. Used to append additional content.
-     * @param int    $depth  Depth of menu item. Used for padding.
-     * @param array  $args   An array of arguments. @see wp_nav_menu()
+     * @param string $output
+     *                Passed by reference. Used to append additional content.
+     * @param int $depth
+     *                Depth of menu item. Used for padding.
+     * @param array $args
+     *                An array of arguments. @see wp_nav_menu()
      */
     public function end_lvl(&$output, $depth = 0, $args = array()) 
     {
         $indent = str_repeat("\t", $depth);
 
-        $output .= $indent . '</ul>' . "\n";
+        if ($this->_type == 'navbar') {
+            $output .= $indent . '</ul>' . "\n";
+        }
+        else if ($this->_type == 'offcanvas') {
+            $output .= $indent . '</ul>' . "\n";
+        }
     }
 }
