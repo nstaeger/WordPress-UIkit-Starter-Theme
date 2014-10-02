@@ -6,7 +6,10 @@
  * @since 2014-08-31
  */
 
-get_header(); ?>
+get_header();
+get_template_part('element', 'header');
+get_template_part('element', 'navigation');
+?>
 
 <section id="main" class="uk-margin-large-top">
     <div class="uk-container uk-container-center">
@@ -44,4 +47,8 @@ get_header(); ?>
 </section>
 
 <?php //get_sidebar(); ?>
-<?php get_footer(); ?>
+
+<?php
+
+get_template_part('element', 'footer');
+get_footer();

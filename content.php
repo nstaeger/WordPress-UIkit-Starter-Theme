@@ -3,10 +3,18 @@
  * The default template for displaying content
  *
  * Used for both single and index/archive/search.
+ *
+ * TODOs
+ * - Categories: only print if any set
+ * - Post-Image
+ * - Localize
+ * 
+ * @author nstaeger
+ * @since 2014-08-31
  */
 ?>
 
-<article class="uk-article">
+<article id="post-<?php the_ID(); ?>" <?php post_class(array('uk-article')); ?>>
     <?php
         if ( is_single() ) {
             the_title('<h1 class="uk-article-title">', '</h1>');
@@ -15,60 +23,48 @@
             the_title('<h1 class="uk-article-title"><a href="' . esc_url( get_permalink() ) . '" class="uk-link-reset" rel="bookmark">', '</a></h1>');
         }
     ?>
-    <p class="uk-article-meta">Autor und so...</p>
+    <p class="uk-article-meta">
+        <?php printf(
+            '<span class="nst-author uk-link-reset"><a href="%1$s" rel="author"><i class="uk-icon-user"></i> %2$s</a></span>',
+            esc_url(get_author_posts_url(get_the_author_meta( 'ID' ))),
+            get_the_author()
+        ); ?>
+        <?php printf(
+            '<span class="nst-entry-time uk-margin-small-left"><i class="uk-icon-clock-o"></i> <time datetime="%1$s">%2$s</time></span>',
+            esc_attr(get_the_date('c')),
+            esc_html(get_the_date())
+        ); ?>
+        <span class="nst-category-list uk-margin-small-left uk-link-reset">
+            <i class="uk-icon-ticket"></i> <?php echo get_the_category_list(', '); ?>
+        </span>
+        <?php if (!post_password_required() && ( comments_open() || get_comments_number() )) : ?>
+            <span class="nst-comments uk-margin-small-left uk-link-reset">
+                <?php comments_popup_link( '<i class="uk-icon-comment"></i> Leave a comment', '<i class="uk-icon-comment"></i> 1', '<i class="uk-icon-comment"></i> %' ); ?>
+            </span>
+        <?php endif; ?>
+        <?php edit_post_link( '<i class="uk-icon-edit"></i> Edit', '<span class="nst-edit-link uk-margin-small-left uk-link-reset">', '</span>' ); ?>
+        <?php if (is_single()) : ?>
+            <br/ >
+            <?php the_tags('<span class="nst-tag-list uk-link-reset"><i class="uk-icon-tag"></i> ', ', ', '</span>'); ?>
+        <?php endif; ?>
+    </p>
+
+    <?php if ( is_search() ) : ?>
+    <div class="nst-entry-summary">
+        <?php the_excerpt(); ?>
+    </div><!-- .entry-summary -->
+    <?php else : ?>
+    <div class="nst-entry-content">
+        <?php
+            the_content( __( 'Continue reading <span class="meta-nav">&rarr;</span>', 'twentyfourteen' ) );
+            wp_link_pages( array(
+                'before'      => '<div class="page-links"><span class="page-links-title">' . __( 'Pages:', 'twentyfourteen' ) . '</span>',
+                'after'       => '</div>',
+                'link_before' => '<span>',
+                'link_after'  => '</span>',
+            ) );
+        ?>
+    </div><!-- .entry-content -->
+    <?php endif; ?>
+
 </article>
-
-<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-	<?php twentyfourteen_post_thumbnail(); ?>
-
-	<header class="entry-header">
-		<?php if ( in_array( 'category', get_object_taxonomies( get_post_type() ) ) && twentyfourteen_categorized_blog() ) : ?>
-		<div class="entry-meta">
-			<span class="cat-links"><?php echo get_the_category_list( _x( ', ', 'Used between list items, there is a space after the comma.', 'twentyfourteen' ) ); ?></span>
-		</div>
-		<?php
-			endif;
-
-			if ( is_single() ) :
-				the_title( '<h1 class="entry-title">', '</h1>' );
-			else :
-				the_title( '<h1 class="entry-title"><a href="' . esc_url( get_permalink() ) . '" rel="bookmark">', '</a></h1>' );
-			endif;
-		?>
-
-		<div class="entry-meta">
-			<?php
-				if ( 'post' == get_post_type() )
-					twentyfourteen_posted_on();
-
-				if ( ! post_password_required() && ( comments_open() || get_comments_number() ) ) :
-			?>
-			<span class="comments-link"><?php comments_popup_link( __( 'Leave a comment', 'twentyfourteen' ), __( '1 Comment', 'twentyfourteen' ), __( '% Comments', 'twentyfourteen' ) ); ?></span>
-			<?php
-				endif;
-
-				edit_post_link( __( 'Edit', 'twentyfourteen' ), '<span class="edit-link">', '</span>' );
-			?>
-		</div><!-- .entry-meta -->
-	</header><!-- .entry-header -->
-
-	<?php if ( is_search() ) : ?>
-	<div class="entry-summary">
-		<?php the_excerpt(); ?>
-	</div><!-- .entry-summary -->
-	<?php else : ?>
-	<div class="entry-content">
-		<?php
-			the_content( __( 'Continue reading <span class="meta-nav">&rarr;</span>', 'twentyfourteen' ) );
-			wp_link_pages( array(
-				'before'      => '<div class="page-links"><span class="page-links-title">' . __( 'Pages:', 'twentyfourteen' ) . '</span>',
-				'after'       => '</div>',
-				'link_before' => '<span>',
-				'link_after'  => '</span>',
-			) );
-		?>
-	</div><!-- .entry-content -->
-	<?php endif; ?>
-
-	<?php the_tags( '<footer class="entry-meta"><span class="tag-links">', '', '</span></footer>' ); ?>
-</article><!-- #post-## -->

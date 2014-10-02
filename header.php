@@ -17,7 +17,7 @@
 <html class="ie ie8" <?php language_attributes(); ?>>
 <![endif]-->
 <!--[if !(IE 7) | !(IE 8)  ]><!-->
-<html <?php language_attributes(); ?>>
+<html <?php language_attributes(); ?> class="uk-height-1-1">
 <!--<![endif]-->
 <head>
     <meta charset="<?php bloginfo( 'charset' ); ?>" />
@@ -32,26 +32,4 @@
     <?php wp_head(); ?>
 </head>
 
-<body <?php body_class(); ?>>
-
-    <header id="header" class="uk-margin-large-top">
-        <div class="uk-container uk-container-center">
-            <h1><a href="<?php echo esc_url(home_url('/')); ?>" title="<?php echo esc_attr(get_bloginfo('name', 'display')); ?>" class="uk-link-reset"><?php bloginfo( 'name' ); ?></a></h1>
-            <span><?php bloginfo( 'description' ); ?></span>
-        </div>
-    </header>
-
-    <nav id="navbar" class="uk-navbar uk-margin-large-top">
-        <div class="uk-container uk-container-center">
-            <?php
-                wp_nav_menu(array(
-                    'menu' => 'main',
-                    'theme_location' => 'main',
-                    'menu_class' => 'uk-navbar-nav uk-hidden-small',
-                    'depth' => 2,
-                    'walker' => new WordpressUikitMenuWalker('navbar')
-                ));
-            ?>
-            <a href="#offcanvas-menu" class="uk-navbar-toggle uk-visible-small" data-uk-offcanvas></a>
-        </div>
-    </nav>
+<body <?php body_class(array('uk-height-1-1')); ?>>

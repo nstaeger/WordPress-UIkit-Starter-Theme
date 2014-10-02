@@ -22,7 +22,7 @@ add_action('after_setup_theme', 'wp_uikit_starter_register_menus');
  * @return string
  *                The filtered title.
  */
-function wp_uikit_starter_wp_title( $title, $sep ) {
+function wp_uikit_starter_wp_title($title, $sep) {
     global $paged, $page;
 
     if ( is_feed() ) {
