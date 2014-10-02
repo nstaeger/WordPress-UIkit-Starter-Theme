@@ -3,13 +3,15 @@
 require('php/walker/WordpressUikitMenuWalker.php');
 
 
-/**
- * Register menus
- */
-function wp_uikit_starter_register_menus() {
-    register_nav_menu('main', 'Main Menu');
+if (!function_exists('wp_uikit_starter_setup'))
+{
+    function wp_uikit_starter_setup()
+    {
+        register_nav_menu('main', 'Main Menu');
+        register_nav_menu('footer', 'Footer Menu');
+    }
+    add_action('after_setup_theme', 'wp_uikit_starter_setup');
 }
-add_action('after_setup_theme', 'wp_uikit_starter_register_menus');
 
 
 /**
