@@ -143,6 +143,9 @@ class WordpressUikitMenuWalker extends Walker_Nav_Menu
         else if ($this->_type == 'offcanvas') {
             $output .= $indent . '<ul class="uk-nav-sub">' . "\n";
         }
+        else {
+            $output .= $indent . '<ul>' . "\n";
+        }
     }
 
     /**
@@ -163,6 +166,9 @@ class WordpressUikitMenuWalker extends Walker_Nav_Menu
             $output .= $indent . '</ul>' . "\n";
         }
         else if ($this->_type == 'offcanvas') {
+            $output .= $indent . '</ul>' . "\n";
+        }
+        else {
             $output .= $indent . '</ul>' . "\n";
         }
     }

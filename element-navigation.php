@@ -9,7 +9,6 @@
     <div class="uk-container uk-container-center">
         <?php
             wp_nav_menu(array(
-                'menu' => 'main',
                 'theme_location' => 'main',
                 'menu_class' => 'uk-navbar-nav uk-hidden-small',
                 'depth' => 2,
@@ -23,7 +22,6 @@
     <div class="uk-offcanvas-bar">
         <?php
             wp_nav_menu(array(
-                'menu' => 'main',
                 'theme_location' => 'main',
                 'menu_class' => 'uk-nav uk-nav-offcanvas',
                 'depth' => 2,
