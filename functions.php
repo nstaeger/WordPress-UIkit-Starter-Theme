@@ -1,5 +1,6 @@
 <?php
 
+require('php/walker/WordpressUikitCommentsWalker.php');
 require('php/walker/WordpressUikitMenuWalker.php');
 
 
@@ -7,6 +8,10 @@ if (!function_exists('wp_uikit_starter_setup'))
 {
     function wp_uikit_starter_setup()
     {
+        // Add HTML5 support
+        add_theme_support('html5', array('search-form', 'comment-form', 'comment-list', 'gallery', 'caption'));
+
+        // Register menus
         register_nav_menu('main', 'Main Menu');
         register_nav_menu('footer', 'Footer Menu');
     }
