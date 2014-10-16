@@ -6,7 +6,7 @@
  * @since 2014-08-31
  */
 ?>
-<footer id="footer" class="nst-footer uk-margin-large-top">
+<footer id="footer" class="uk-margin-large-top">
     <div class="uk-container uk-container-center">
     	<nav class="uk-text-center">
 	    	<?php

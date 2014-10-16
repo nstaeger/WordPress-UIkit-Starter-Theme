@@ -1,0 +1,18 @@
+/**
+ * Contains all stlying for code, that cannot be modified and needs uikit-styling
+ * E.g.: widgets
+ */
+
+.widget_search {
+    form.search-form {
+        &:extend(.uk-form all);
+
+        .search-field {
+            .uk-width-1-1;
+        }
+
+        .search-submit {
+            .uk-button;
+        }
+    }
+}

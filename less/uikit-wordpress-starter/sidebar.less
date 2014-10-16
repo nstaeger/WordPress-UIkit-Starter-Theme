@@ -1,0 +1,32 @@
+/**
+ * Styling for sidebar
+ */
+
+.nst-sidebar {
+    ul {
+        &:extend(.uk-list all);
+        &:extend(.uk-list-line all);
+    }
+}
+
+.nst-widget {
+    margin-bottom: 26px;
+}
+
+.widget_search {
+    form.search-form {
+
+        .search-field {
+            .uk-margin-small-top;
+        }
+
+        .search-submit {
+            .uk-margin-small-top;
+            .uk-width-1-1;
+        }
+
+        &:after {
+            clear: both;
+        }
+    }
+}

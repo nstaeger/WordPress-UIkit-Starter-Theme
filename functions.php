@@ -8,12 +8,23 @@ if (!function_exists('wp_uikit_starter_setup'))
 {
     function wp_uikit_starter_setup()
     {
-        // Add HTML5 support
+        // add HTML5 support
         add_theme_support('html5', array('search-form', 'comment-form', 'comment-list', 'gallery', 'caption'));
 
-        // Register menus
+        // register menus
         register_nav_menu('main', 'Main Menu');
         register_nav_menu('footer', 'Footer Menu');
+
+        // register sidebars
+        register_sidebar(array(
+            'name' => 'Sidebar',
+            'id' => 'sidebar-main',
+            'description' => 'Main Sidebar on the left side.',
+            'before_widget' => '<div id="%1$s" class="%2$s nst-widget uk-panel">',
+            'after_widget'  => '</div>',
+            'before_title'  => '<h2>',
+            'after_title'   => '</h2>'
+        ));
     }
     add_action('after_setup_theme', 'wp_uikit_starter_setup');
 }
