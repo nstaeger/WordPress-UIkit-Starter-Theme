@@ -1,4 +1,3 @@
-/*! UIkit 2.11.0 | http://www.getuikit.com | (c) 2014 YOOtheme | MIT License */
 /* ========================================================================
    Component: Base
  ========================================================================== */
@@ -2358,8 +2357,7 @@ html:not(.uk-touch) .uk-nav-offcanvas ul a:hover {
 }
 /* Modifier: `uk-list-line`
  ========================================================================== */
-.uk-list-line > li:nth-child(n+2),
-.nst-sidebar ul > li:nth-child(n+2) {
+.uk-list-line > li:nth-child(n+2) {
   margin-top: 5px;
   padding-top: 5px;
   border-top: 1px solid #dddddd;

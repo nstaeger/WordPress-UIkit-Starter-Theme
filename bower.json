@@ -1,0 +1,24 @@
+{
+  "name": "WordPress UIkit Starter Theme",
+  "version": "0.1.0",
+  "homepage": "https://github.com/nstaeger/WordPress-UIkit-Starter-Theme",
+  "authors": [
+    "nstaeger <mail@nstaeger.de>"
+  ],
+  "description": "A WordPress starter theme for developers using the frontend framework UIkit",
+  "moduleType": [
+    "globals"
+  ],
+  "license": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.1",
+    "uikit": "~2.11.1"
+  }
+}

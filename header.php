@@ -25,8 +25,7 @@
     <title><?php wp_title('-', true, 'right'); ?></title>
     <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
 
-    <!-- TODO change for production -->
-    <link rel="stylesheet" href="<?php // echo get_template_directory_uri(); ?>../uikit/dist/css/uikit.uikit-wordpress-starter.min.css">
+    <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/uikit.css">
     <script src="<?php echo get_template_directory_uri(); ?>/js/jquery-1.11.1.min.js"></script>
     <script src="<?php echo get_template_directory_uri(); ?>/js/uikit.min.js"></script>
     
