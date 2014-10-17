@@ -14,12 +14,13 @@ You will need [Git](http://git-scm.com/), [Node](http://nodejs.org/), [Bower](ht
 
 - `git clone git@github.com:nstaeger/WordPress-UIkit-Starter-Theme.git` into the `wp-content/themes` folder of your WordPress-installation.
 - `cd wordpress-uikit-starter-theme`
-- `npm install`
 - `bower install`
 - Than go to the WordPress administration-panel and activate the theme.
 
 
 ## Developers
+
+Before you start developing, its recommended to run `npm install` if you have not already.
 
 ### Bower
 
