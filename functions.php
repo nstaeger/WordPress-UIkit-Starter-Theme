@@ -15,11 +15,22 @@ if (!function_exists('wp_uikit_starter_setup'))
         register_nav_menu('main', 'Main Menu');
         register_nav_menu('footer', 'Footer Menu');
 
-        // register sidebars
+        // register main sidebar
         register_sidebar(array(
             'name' => 'Sidebar',
             'id' => 'sidebar-main',
             'description' => 'Main Sidebar on the left side.',
+            'before_widget' => '<div id="%1$s" class="%2$s nst-widget uk-panel">',
+            'after_widget'  => '</div>',
+            'before_title'  => '<h2>',
+            'after_title'   => '</h2>'
+        ));
+
+        // register footer sidebar
+        register_sidebar(array(
+            'name' => 'Footer Sidebar',
+            'id' => 'sidebar-footer',
+            'description' => 'Horizontal Sidebar in the footer',
             'before_widget' => '<div id="%1$s" class="%2$s nst-widget uk-panel">',
             'after_widget'  => '</div>',
             'before_title'  => '<h2>',
