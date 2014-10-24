@@ -12,7 +12,7 @@ get_header(); ?>
     <div class="uk-vertical-align-middle">
     	<h1>404</h1>
     	<p>Sorry, but we could not find, what you were looking for.</p>
-    	<p><a href=""><i class="uk-icon-reply"></i> go back to website</a></p>
+    	<p><a href="<?php echo esc_url( home_url() ); ?>"><i class="uk-icon-reply"></i> go back to website</a></p>
     </div>
 </section>
 

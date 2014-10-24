@@ -2,16 +2,17 @@
  * Styling for sidebar
  */
 
-.nst-sidebar {
+.nst-sidebar,
+.nst-sidebar-horizontal {
     ul {
         &:extend(.uk-list all);
     }
 
-    .nst-widget {
-        margin-bottom: 26px;
-    }
-
     .widget_search {
+        .screen-reader-text {
+            .uk-hidden;
+        }
+
         form.search-form {
 
             .search-field {
@@ -24,4 +25,8 @@
             }
         }
     }
+}
+
+.nst-sidebar .nst-widget {
+    margin-bottom: 26px;
 }

@@ -14,9 +14,7 @@
             </div>
             <?php if ( is_active_sidebar( 'sidebar-main' ) ) : ?>
                 <div class="uk-width-medium-1-4">
-                    <aside class="nst-sidebar">
-                        <?php dynamic_sidebar( 'sidebar-main' ); ?>
-                    </aside>
+                    <?php get_sidebar(); ?>
                 </div>
             <?php endif; ?>
         </div>

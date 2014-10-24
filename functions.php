@@ -4,6 +4,9 @@ require('php/walker/WordpressUikitCommentsWalker.php');
 require('php/walker/WordpressUikitMenuWalker.php');
 
 
+/**
+ * Theme setup funciton
+ */
 if (!function_exists('wp_uikit_starter_setup'))
 {
     function wp_uikit_starter_setup()
@@ -36,8 +39,27 @@ if (!function_exists('wp_uikit_starter_setup'))
             'before_title'  => '<h2>',
             'after_title'   => '</h2>'
         ));
+
+        // Add Filter for the title
+        add_filter( 'wp_title', 'wp_uikit_starter_wp_title', 10, 2 );
+
+        // Add filter for the footer-sidebar
+        // Only apply this filter, if not the admin-panel is rendered
+        if (!is_admin()) {
+            add_filter( 'dynamic_sidebar_params', 'wp_uikit_starter_dynamic_sidebar_params_footer');
+        }
     }
     add_action('after_setup_theme', 'wp_uikit_starter_setup');
+}
+
+
+/**
+ * Return the number of widgets within a sidebar
+ */
+function get_widgets_count($sidebar_id)
+{
+    $sidebars_widgets = wp_get_sidebars_widgets();
+    return (int) count((array) $sidebars_widgets[$sidebar_id]);
 }
 
 
@@ -69,4 +91,22 @@ function wp_uikit_starter_wp_title($title, $sep) {
 
     return $title;
 }
-add_filter( 'wp_title', 'wp_uikit_starter_wp_title', 10, 2 );
+
+
+
+/**
+ * @param array $params
+ *              The params of the widget
+ * @return array
+ *              The params of the widget
+ */
+function wp_uikit_starter_dynamic_sidebar_params_footer($params)
+{
+    // only affect the params of the sidebar-footer
+    if ($params[0]['id'] == 'sidebar-footer') {
+        // Add a uk-width-medium-1-x class, where x is the number of the widgets within the sidebar
+        $class = 'uk-width-medium-1-' . get_widgets_count('sidebar-footer');
+        $params[0]['before_widget'] = preg_replace('(class=")', 'class="' . $class . ' ', $params[0]['before_widget']);
+    }
+    return $params;
+}

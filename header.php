@@ -3,6 +3,7 @@
  * The Header template
  *
  * Displays all of the <head> section and everything up till
+ * and the opening body-tag
  *
  * @author nstaeger
  * @since 2014-08-31
@@ -11,10 +12,10 @@
 
 ?><!DOCTYPE html>
 <!--[if IE 7]>
-<html class="ie ie7" <?php language_attributes(); ?>>
+<html class="ie ie7" <?php language_attributes(); ?> class="uk-height-1-1">
 <![endif]-->
 <!--[if IE 8]>
-<html class="ie ie8" <?php language_attributes(); ?>>
+<html class="ie ie8" <?php language_attributes(); ?> class="uk-height-1-1">
 <![endif]-->
 <!--[if !(IE 7) | !(IE 8)  ]><!-->
 <html <?php language_attributes(); ?> class="uk-height-1-1">
@@ -22,10 +23,12 @@
 <head>
     <meta charset="<?php bloginfo( 'charset' ); ?>" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title><?php wp_title('-', true, 'right'); ?></title>
-    <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
 
-    <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/uikit.css">
+    <title><?php wp_title('-', true, 'right'); ?></title>
+
+    <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
+    <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/uikit.css" />
+
     <script src="<?php echo get_template_directory_uri(); ?>/js/jquery-1.11.1.min.js"></script>
     <script src="<?php echo get_template_directory_uri(); ?>/js/uikit.min.js"></script>
     
