@@ -112,9 +112,7 @@ class WordpressUikitMenuWalker extends Walker_Nav_Menu
     {
         $indent = str_repeat("\t", $depth);
 
-        $has_children = in_array('menu-item-has-children', $item->classes);
-
-        if ($has_children && $depth == 0) {
+        if ($item->classes != '' && in_array('menu-item-has-children', $item->classes) && $depth == 0) {
             if ($this->_type == 'navbar') {
                 $output .= $indent . '</div>' . "\n";
             }

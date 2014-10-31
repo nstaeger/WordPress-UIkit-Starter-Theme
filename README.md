@@ -28,7 +28,7 @@ This theme uses [Bower](http://bower.io/) to manage its dependencies like [jQuer
 
 ### Gulp
 
-You can use Gulp to compile the less files. Here are a few tasks, that come with the theme:
+You can use [Gulp](http://gulpjs.com/) to compile the less files. Here are a few tasks, that come with the theme:
 
 - `gulp compile-less` Compiles the UIkit and theme-specific Less files into your CSS folder.
 - `gulp watch` Watches the `less/`-folder for changes. If changes are made, the CSS-file will be recompiled.
