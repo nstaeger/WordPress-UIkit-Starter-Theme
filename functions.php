@@ -14,6 +14,9 @@ if (!function_exists('wp_uikit_starter_setup'))
         // add HTML5 support
         add_theme_support('html5', array('search-form', 'comment-form', 'comment-list', 'gallery', 'caption'));
 
+        // add Featured Image support
+        add_theme_support('post-thumbnails');
+
         // register menus
         register_nav_menu('main', 'Main Menu');
         register_nav_menu('footer', 'Footer Menu');
@@ -93,7 +96,6 @@ function wp_uikit_starter_wp_title($title, $sep) {
 }
 
 
-
 /**
  * @param array $params
  *              The params of the widget
@@ -110,3 +112,31 @@ function wp_uikit_starter_dynamic_sidebar_params_footer($params)
     }
     return $params;
 }
+
+
+/**
+ * Display an optional post thumbnail.
+ *
+ * Wraps the post thumbnail in an anchor element on index
+ * views, or a div element when on single views.
+ */
+function wp_uikit_starter_post_thumbnail() {
+    if ( post_password_required() || is_attachment() || ! has_post_thumbnail() ) {
+        return;
+    }
+
+    if ( is_singular() ) : ?>
+
+        <div>
+            <?php the_post_thumbnail(); ?>
+        </div>
+
+    <?php else : ?>
+
+        <a href="<?php the_permalink(); ?>">
+            <?php the_post_thumbnail(); ?>
+        </a>
+
+    <?php endif; // End is_singular()
+}
+

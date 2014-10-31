@@ -15,6 +15,8 @@
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(array('uk-article')); ?>>
+    <?php wp_uikit_starter_post_thumbnail(); ?>
+
     <?php
         if ( is_single() ) {
             the_title('<h1 class="uk-article-title">', '</h1>');
