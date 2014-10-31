@@ -8,14 +8,22 @@ A [WordPress](http://www.wordpress.org) starter theme for developers using the f
 This theme is in development and at current stage not completed! You might miss some features.
 
 
+## Theme Features
+
+- Full responsive theme
+- Two-level dropdown navigation with offcanvas-navigation for smaller devices
+- Main sidebar on the right side and horizontal footer sidebar with auto-columns
+- Support for featured image
+
+
 ## Usage
 
 You will need [Git](http://git-scm.com/), [Node](http://nodejs.org/), [Bower](http://bower.io/) and [Gulp](http://gulpjs.com/) installed, before you start. You also need a running installation of WordPress.
 
 - `git clone git@github.com:nstaeger/WordPress-UIkit-Starter-Theme.git` into the `wp-content/themes` folder of your WordPress-installation.
-- `cd wordpress-uikit-starter-theme`
+- `cd WordPress-UIkit-starter-theme`
 - `bower install`
-- Than go to the WordPress administration-panel and activate the theme.
+- Go to the WordPress administration-panel and activate the theme.
 
 
 ## Developers
