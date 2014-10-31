@@ -10,7 +10,7 @@
     <div class="uk-container uk-container-center">
         <?php get_sidebar('footer'); ?>
 
-    	<nav class="uk-margin-large-top uk-text-center">
+    	<nav class="uk-margin-bottom uk-text-center">
 	    	<?php
 	            wp_nav_menu(array(
 	                'theme_location' => 'footer',
@@ -21,7 +21,7 @@
 	        ?>
 	    </nav>
 
-        <div class="uk-text-center uk-text-muted">
+        <div class="uk-margin-bottom uk-text-center uk-text-muted">
             <div class="uk-panel">
                 <p>uikit-starter theme made by <a href="http://www.nstaeger.de/" class="uk-link-reset" target="_blank">nstaeger.de</a></p>
             </div>

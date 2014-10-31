@@ -76,20 +76,33 @@ class WordpressUikitCommentsWalker extends Walker_Comment {
     protected function html5_comment( $comment, $depth, $args ) {
         ?>
         <li id="comment-<?php comment_ID(); ?>" <?php comment_class( $this->has_children ? 'parent' : '' ); ?>>
-        <article id="div-comment-<?php comment_ID(); ?>" class="uk-comment">
+        <article id="comment-<?php comment_ID(); ?>" class="uk-comment">
             <header class="uk-comment-header">
                 <?php // TODO assign class to image-tag ?>
                 <?php if ( 0 != $args['avatar_size'] ) echo get_avatar( $comment, $args['avatar_size'] ); ?>
-                <?php printf('<h4 class="uk-comment-title">%s</h4>',    sprintf( '<b class="fn">%s</b>', get_comment_author_link() ) ); ?>
+                <?php printf('<h4 class="uk-comment-title">%s</h4>', get_comment_author_link() ); ?>
 
-                <div class="uk-comment-meta uk-link-reset">
-                    <a href="<?php echo esc_url( get_comment_link( $comment->comment_ID, $args ) ); ?>">
-                        <time datetime="<?php comment_time( 'c' ); ?>">
-                            <?php printf( '%1$s at %2$s', get_comment_date(), get_comment_time() ); ?>
-                        </time>
-                    </a>
-                    <span class="uk-margin-small-left"><?php edit_comment_link( __( 'Edit' ), '<i class="uk-icon-edit"></i> ' ); ?></span>
-                </div><!-- .comment-metadata -->
+
+                <ul class="uk-comment-meta uk-subnav uk-subnav-line">
+                    <li>
+                        <a href="<?php echo esc_url( get_comment_link( $comment->comment_ID, $args ) ); ?>">
+                            <time datetime="<?php comment_time( 'c' ); ?>">
+                                <?php printf( '%1$s at %2$s', get_comment_date(), get_comment_time() ); ?>
+                            </time>
+                        </a>
+                    </li>
+                    <li>
+                        <span class="uk-margin-small-left">
+                            <i class="uk-icon-reply"></i>
+                            <?php comment_reply_link( array_merge( $args, array( 'add_below' => 'uk-comment', 'depth' => $depth, 'max_depth' => $args['max_depth'] ) ) ); ?>
+                        </span>
+                    </li>
+                    <li>
+                        <span class="uk-margin-small-left">
+                            <?php edit_comment_link( __( 'Edit' ), '<i class="uk-icon-edit"></i> ' ); ?>
+                        </span>
+                    </li>
+                </ul>
 
                 <?php if ( '0' == $comment->comment_approved ) : ?>
                     <p class="comment-awaiting-moderation"><?php _e( 'Your comment is awaiting moderation.' ); ?></p>
@@ -98,10 +111,6 @@ class WordpressUikitCommentsWalker extends Walker_Comment {
 
             <div class="uk-comment-body">
                 <?php comment_text(); ?>
-            </div>
-
-            <div class="nst-reply">
-                <?php comment_reply_link( array_merge( $args, array( 'add_below' => 'div-comment', 'depth' => $depth, 'max_depth' => $args['max_depth'] ) ) ); ?>
             </div>
         </article>
         <?php

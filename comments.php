@@ -14,14 +14,15 @@ if (post_password_required()) {
 	return;
 }
 
+/**
+ * Settings for the Comment-Form
+ */
 $commenter = wp_get_current_commenter();
 $req = get_option( 'require_name_email' );
-$aria_req = ( $req ? " aria-required='true'" : '' );
+$aria_req = ( $req ? ' aria-required="true" required' : '' );
 
 $form_args = array(
-
     'fields' => apply_filters('comment_form_default_fields', array(
-
         'author' =>
             '<div class="comment-form-author uk-form-row">'
             . '<label for="author" class="uk-form-label">'
@@ -29,22 +30,43 @@ $form_args = array(
                 . ( $req ? ' <span class="required">*</span>' : '' )
             . '</label>'
             . '<div class="uk-form-controls">'
-                . '<input id="author" class="uk-width-1-1" name="author" type="text" value="' . esc_attr( $commenter['comment_author'] ) . '" size="30"' . $aria_req . ' />'
+                . '<input id="author" class="uk-width-1-1" name="author" type="text" value="' . esc_attr($commenter['comment_author']) . '" size="30"' . $aria_req . ' />'
             . '</div>'
             . '</div>',
-
         'email' =>
-            '<p class="comment-form-email"><label for="email">' . __( 'Email', 'domainreference' ) . '</label> ' .
-            ( $req ? '<span class="required">*</span>' : '' ) .
-            '<input id="email" name="email" type="text" value="' . esc_attr(  $commenter['comment_author_email'] ) .
-            '" size="30"' . $aria_req . ' /></p>',
-
+            '<div class="comment-form-email uk-form-row">'
+            . '<label for="email" class="uk-form-label">'
+                . __( 'Email', 'domainreference' )
+                . ( $req ? ' <span class="required">*</span>' : '' )
+            . '</label>'
+            . '<div class="uk-form-controls">'
+                . '<input id="email" class="uk-width-1-1" name="email" type="email" value="' . esc_attr($commenter['comment_author_email']) . '" size="30"' . $aria_req . ' />'
+            . '</div>'
+            . '</div>',
         'url' =>
-            '<p class="comment-form-url"><label for="url">' . __( 'Website', 'domainreference' ) . '</label>' .
-            '<input id="url" name="url" type="text" value="' . esc_attr( $commenter['comment_author_url'] ) .
-            '" size="30" /></p>',
-
-    ))
+            '<div class="comment-form-url uk-form-row">'
+            . '<label for="url" class="uk-form-label">'
+                . __( 'Website', 'domainreference' )
+            . '</label>'
+            . '<div class="uk-form-controls">'
+                . '<input id="url" class="uk-width-1-1" name="url" type="url" value="' . esc_attr($commenter['comment_author_url']) . '" size="30" />'
+            . '</div>'
+            . '</div>',
+    )),
+    'comment_field' =>
+        '<div class="comment-form-comment uk-form-row">'
+        . '<label for="comment" class="uk-form-label">'
+            . _x( 'Comment', 'noun' )
+            . ' <span class="required">*</span>'
+        . '</label>'
+        . '<div class="uk-form-controls">'
+            . '<textarea id="comment" class="uk-width-1-1" name="comment" cols="45" rows="8" aria-required="true" required ></textarea>'
+        . '</div>'
+        . '</div>',
+    'comment_notes_after' =>
+        '<p class="form-allowed-tags">'
+            . sprintf( __( 'You may use these <abbr title="HyperText Markup Language">HTML</abbr> tags and attributes: %s' ), ' <pre><code>' . allowed_tags() . '</code></pre>' )
+        . '</p>'
 );
 
 ?>
@@ -70,7 +92,7 @@ $form_args = array(
                 wp_list_comments(array(
                     'style'      => 'ul',
                     'short_ping' => true,
-                    'avatar_size'=> 34,
+                    'avatar_size'=> 56,
                     'walker'     => new WordpressUikitCommentsWalker()
                 ));
             ?>
@@ -92,7 +114,8 @@ $form_args = array(
 
     <?php endif; ?>
 
-    <?php // TODO eventuell hier mit einem div.uk-form wrappen, anstatt das styling zu vererben ?>
+    <hr>
+
     <?php comment_form($form_args); ?>
 
 </section>

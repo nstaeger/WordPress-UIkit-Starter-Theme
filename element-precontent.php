@@ -12,7 +12,7 @@
 
 <section id="main" class="uk-margin-large-top">
     <div class="uk-container uk-container-center">
-        <div class="uk-grid">
+        <div class="uk-grid" data-uk-grid-margin >
             <?php if ( is_active_sidebar( 'sidebar-main' ) ) : ?>
                 <div class="uk-width-medium-3-4">
             <?php else : ?>

@@ -17,7 +17,19 @@
     }
 }
 
+.uk-comment {
+    .uk-comment-header {
+        img.avatar {
+            .uk-comment-avatar;
+        }
+    }
+}
+
 .comment-form {
     &:extend(.uk-form all);
     &:extend(.uk-form-horizontal all);
+
+    .form-submit input {
+        .uk-button;
+    }
 }
