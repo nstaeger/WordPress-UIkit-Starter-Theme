@@ -7,6 +7,9 @@ A [WordPress](http://www.wordpress.org) starter theme for developers using the f
 
 This theme is in development and at current stage not completed! You might miss some features.
 
+## Screenshot
+
+![Screenshot](/screenshot.png)
 
 ## Theme Features
 
