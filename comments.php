@@ -109,7 +109,7 @@ $form_args = array(
         <?php endif; ?>
 
         <?php if ( ! comments_open() ) : ?>
-            <p class="no-comments"><?php echo 'Comments are closed.'; ?></p>
+            <p>Comments are closed.</p>
         <?php endif; ?>
 
         <hr>

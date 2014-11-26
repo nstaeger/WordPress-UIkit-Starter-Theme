@@ -7,13 +7,13 @@
  */
 
 get_header();
-get_template_part('element', 'header');
-get_template_part('element', 'navigation');
+get_template_part('elements/base', 'header');
+get_template_part('elements/base', 'navigation');
 ?>
 
 
 <?php
-    get_template_part('element', 'precontent');
+    get_template_part('elements/base', 'precontent');
     if (have_posts()) {
         while (have_posts()) {
             the_post();
@@ -29,11 +29,11 @@ get_template_part('element', 'navigation');
     else {
         echo '<p>Nothing found here. Sorry!</p>';
     }
-    get_template_part('element', 'postcontent');
+    get_template_part('elements/base', 'postcontent');
 ?>
 
 
 <?php
 
-get_template_part('element', 'footer');
+get_template_part('elements/base', 'footer');
 get_footer();

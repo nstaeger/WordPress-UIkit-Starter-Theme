@@ -6,7 +6,6 @@
  *
  * TODOs
  * - Categories: only print if any set
- * - Post-Image
  * - Localize
  * 
  * @author nstaeger
@@ -58,13 +57,13 @@
     <?php else : ?>
     <div class="nst-entry-content">
         <?php
-            the_content( __( 'Continue reading <span class="meta-nav">&rarr;</span>', 'twentyfourteen' ) );
-            wp_link_pages( array(
-                'before'      => '<div class="page-links"><span class="page-links-title">' . __( 'Pages:', 'twentyfourteen' ) . '</span>',
-                'after'       => '</div>',
-                'link_before' => '<span>',
-                'link_after'  => '</span>',
-            ) );
+            the_content('Continue reading <span class="meta-nav">&rarr;</span>');
+//            wp_link_pages( array(
+//                'before'      => '<div class="page-links"><span class="page-links-title">Pages</span>',
+//                'after'       => '</div>',
+//                'link_before' => '<span>',
+//                'link_after'  => '</span>',
+//            ) );
         ?>
     </div><!-- .entry-content -->
     <?php endif; ?>
