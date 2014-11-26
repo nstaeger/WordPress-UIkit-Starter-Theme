@@ -9,7 +9,7 @@ var gulp = require('gulp'),
     less = require('gulp-less');
 
 
-gulp.task('default', ['compile-less'], function() {
+gulp.task('default', ['compile-less', 'copy-font'], function() {
 
 });
 
@@ -21,6 +21,14 @@ gulp.task('compile-less', function() {
     gulp.src('less/uikit.less')
         .pipe(less({compress: true}))
         .pipe(gulp.dest('css'));
+});
+
+/**
+ * Compile all less-files.
+ */
+gulp.task('copy-font', function() {
+    gulp.src('bower_components/uikit/fonts/**')
+        .pipe(gulp.dest('fonts'));
 });
 
 /**
