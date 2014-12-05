@@ -7,11 +7,13 @@
  * gulp copy-js
  * gulp watch
  */
-var gulp = require('gulp'),
-    less = require('gulp-less');
+var gulp   = require('gulp'),
+    concat = require('gulp-concat'),
+    less   = require('gulp-less'),
+    uglify = require('gulp-uglify');
 
 
-gulp.task('default', ['compile-less', 'copy-font', 'copy-js'], function() {
+gulp.task('default', ['compile-less', 'copy-font', 'copy-js', 'minify-js'], function() {
 
 });
 
@@ -20,7 +22,7 @@ gulp.task('default', ['compile-less', 'copy-font', 'copy-js'], function() {
  * Compile all less-files.
  */
 gulp.task('compile-less', function() {
-    gulp.src('less/uikit.less')
+    return gulp.src('less/uikit.less')
         .pipe(less({compress: true}))
         .pipe(gulp.dest('css'));
 });
@@ -29,7 +31,7 @@ gulp.task('compile-less', function() {
  * Copies the UIkit fonts to the theme folder
  */
 gulp.task('copy-font', function() {
-    gulp.src('bower_components/uikit/fonts/**')
+    return gulp.src('bower_components/uikit/fonts/**')
         .pipe(gulp.dest('fonts'));
 });
 
@@ -37,10 +39,23 @@ gulp.task('copy-font', function() {
  * Copies the JS-files from bower to the theme folder
  */
 gulp.task('copy-js', function() {
-    gulp.src([
-        'bower_components/uikit/js/uikit.min.js',
-        'bower_components/jquery/dist/jquery.min.js'
+    return gulp.src([
+            'bower_components/uikit/js/uikit.min.js',
+            'bower_components/jquery/dist/jquery.min.js'
         ])
+        .pipe(gulp.dest('js'));
+});
+
+/**
+ * Copies the JS-files from bower to the theme folder
+ */
+gulp.task('minify-js', function() {
+    return gulp.src([
+            'js/**',
+            '!js/all.min.js'
+        ])
+        .pipe(uglify())
+        .pipe(concat('all.min.js'))
         .pipe(gulp.dest('js'));
 });
 
