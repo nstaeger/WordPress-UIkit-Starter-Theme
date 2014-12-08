@@ -19,7 +19,7 @@ if (post_password_required()) {
  */
 $commenter = wp_get_current_commenter();
 $req = get_option( 'require_name_email' );
-$aria_req = ( $req ? ' aria-required="true" required' : '' );
+$required = ( $req ? ' aria-required="true" required' : '' );
 
 $form_args = array(
     'fields' => apply_filters('comment_form_default_fields', array(
@@ -30,7 +30,7 @@ $form_args = array(
                 . ( $req ? ' <span class="required">*</span>' : '' )
             . '</label>'
             . '<div class="uk-form-controls">'
-                . '<input id="author" class="uk-width-1-1" name="author" type="text" value="' . esc_attr($commenter['comment_author']) . '" size="30"' . $aria_req . ' />'
+                . '<input id="author" class="uk-width-1-1" name="author" type="text" value="' . esc_attr($commenter['comment_author']) . '" size="30"' . $required . ' />'
             . '</div>'
             . '</div>',
         'email' =>
@@ -40,7 +40,7 @@ $form_args = array(
                 . ( $req ? ' <span class="required">*</span>' : '' )
             . '</label>'
             . '<div class="uk-form-controls">'
-                . '<input id="email" class="uk-width-1-1" name="email" type="email" value="' . esc_attr($commenter['comment_author_email']) . '" size="30"' . $aria_req . ' />'
+                . '<input id="email" class="uk-width-1-1" name="email" type="email" value="' . esc_attr($commenter['comment_author_email']) . '" size="30"' . $required . ' />'
             . '</div>'
             . '</div>',
         'url' =>
