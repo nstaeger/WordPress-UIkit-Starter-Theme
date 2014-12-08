@@ -5,6 +5,7 @@
  * gulp compile-less
  * gulp copy-font
  * gulp copy-js
+ * gulp minify-js
  * gulp watch
  */
 var gulp   = require('gulp'),
@@ -47,7 +48,7 @@ gulp.task('copy-js', function() {
 });
 
 /**
- * Copies the JS-files from bower to the theme folder
+ * Minifies all JS-files to an 'all.min.js'
  */
 gulp.task('minify-js', function() {
     return gulp.src([
