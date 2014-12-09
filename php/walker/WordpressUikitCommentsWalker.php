@@ -7,7 +7,9 @@
  *      current_theme_supports( 'html5', 'comment-list' )
  *
  * @uses Walker
- * @since 2.7.0
+ *
+ * @author Nicolai Stäger
+ * @version 2014-09-28
  */
 class WordpressUikitCommentsWalker extends Walker_Comment {
 
