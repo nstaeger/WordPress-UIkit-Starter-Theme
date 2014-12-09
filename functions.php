@@ -1,5 +1,6 @@
 <?php
 
+require('php/UIkitGallery.php');
 require('php/walker/WordpressUikitCommentsWalker.php');
 require('php/walker/WordpressUikitMenuWalker.php');
 
@@ -46,8 +47,12 @@ if (!function_exists('wp_uikit_starter_setup'))
         // Add Filter for the title
         add_filter( 'wp_title', 'wp_uikit_starter_wp_title', 10, 2 );
 
+        // Adding a custom class for gallery-shortcode rendering
+        remove_shortcode('gallery', 'gallery_shortcode');
+        add_shortcode('gallery', 'wp_uikit_starter_gallery_shortcode');
+
         // Add filter for the footer-sidebar
-        // Only apply this filter, if not the admin-panel is rendered
+        // Only apply this filter, if not the admin-panel is requested
         if (!is_admin()) {
             add_filter( 'dynamic_sidebar_params', 'wp_uikit_starter_dynamic_sidebar_params_footer');
         }
@@ -140,3 +145,11 @@ function wp_uikit_starter_post_thumbnail() {
     <?php endif; // End is_singular()
 }
 
+
+/**
+ * Output the gallery shortcode the way I want
+ */
+function wp_uikit_starter_gallery_shortcode($attr) {
+    $g = new UIkitGallery();
+    return $g->render($attr);
+}
