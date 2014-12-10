@@ -44,6 +44,5 @@ You can use [Gulp](http://gulpjs.com/) to compile the less files and other stuff
 
 - `gulp compile-less` Compiles the UIkit and theme-specific Less files into your CSS folder.
 - `gulp copy-font` Copies the UIkit font files to the `fonts` directory.
-- `gulp copy-js` Copies the JS-files from UIkit and jQuery to the theme folder
-- `gulp minify-js` Minifies all JS-files to an `all.min.js`
+- `gulp minify-js` Minifies all JS-files to an `all.min.js`.
 - `gulp watch` Watches the `less/`-folder for changes. If changes are made, the CSS-file will be recompiled.

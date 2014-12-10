@@ -4,8 +4,7 @@
  *
  * gulp compile-less
  * gulp copy-font
- * gulp copy-js
- * gulp minify-js
+ * gulp minify
  * gulp watch
  */
 var gulp   = require('gulp'),
@@ -14,7 +13,7 @@ var gulp   = require('gulp'),
     uglify = require('gulp-uglify');
 
 
-gulp.task('default', ['compile-less', 'copy-font', 'copy-js', 'minify-js'], function() {
+gulp.task('default', ['compile-less', 'copy-font', 'minify'], function() {
 
 });
 
@@ -37,21 +36,14 @@ gulp.task('copy-font', function() {
 });
 
 /**
- * Copies the JS-files from bower to the theme folder
- */
-gulp.task('copy-js', function() {
-    return gulp.src([
-            'bower_components/uikit/js/uikit.min.js',
-            'bower_components/jquery/dist/jquery.min.js'
-        ])
-        .pipe(gulp.dest('js'));
-});
-
-/**
  * Minifies all JS-files to an 'all.min.js'
  */
-gulp.task('minify-js', function() {
+gulp.task('minify', function() {
     return gulp.src([
+            'bower_components/jquery/dist/jquery.js',
+            'bower_components/uikit/js/uikit.js',
+            'bower_components/uikit/js/components/slideshow.js',
+            'bower_components/uikit/js/components/slideshow-fx.js',
             'js/**',
             '!js/all.min.js'
         ])

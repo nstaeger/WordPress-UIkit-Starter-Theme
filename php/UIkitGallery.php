@@ -91,6 +91,8 @@ class UIkitGallery {
         $output[] = '<div data-uk-slideshow>';
         $output[] = '<ul class="uk-slideshow">';
 
+        $output[] = '<li><img src="http://localhost/wordpress-uikit-starter/wp-content/uploads/2014/12/photo-1414073875831-b477096311461.jpg" /></li>';
+
         $output[] = '</ul>';
         $output[] = '<a href="" data-uk-slideshow-item="previous"></a>';
         $output[] = '<a href="" data-uk-slideshow-item="next"></a>';
