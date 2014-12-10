@@ -88,17 +88,45 @@ class UIkitGallery {
     {
         $output = array();
 
-        $output[] = '<div data-uk-slideshow>';
+        $output[] = '<div class="uk-slidenav-position" data-uk-slideshow>';
         $output[] = '<ul class="uk-slideshow">';
 
-        $output[] = '<li><img src="http://localhost/wordpress-uikit-starter/wp-content/uploads/2014/12/photo-1414073875831-b477096311461.jpg" /></li>';
+        foreach ($this->attachments as $attachment) {
+            $image = $this->getImageByAttachment($attachment);
+            $output[] = '<li style="height: 333px;">';
+            $output[] = '<img src=' . $image[0] . ' width="' . $image[1] . '" height="' . $image[2] . '" />';
+            $output[] = '</li>';
+        }
 
         $output[] = '</ul>';
-        $output[] = '<a href="" data-uk-slideshow-item="previous"></a>';
-        $output[] = '<a href="" data-uk-slideshow-item="next"></a>';
+        $output[] = '<a href="" class="uk-slidenav uk-slidenav-previous"  data-uk-slideshow-item="previous"></a>';
+        $output[] = '<a href="" class="uk-slidenav uk-slidenav-next" data-uk-slideshow-item="next"></a>';
         $output[] = '</div>';
 
         return implode(" ", $output);
+    }
+
+
+    /**
+     * Gets the image out of an attachment
+     *
+     * @param $attachment
+     * @return array|bool
+     */
+    private function getImageByAttachment($attachment)
+    {
+        return $this->getImageByAttachmentID($attachment->ID);
+    }
+
+    
+    /**
+     * Gets the image from an id
+     * @param $id
+     * @return array|bool
+     */
+    private function getImageByAttachmentID($id)
+    {
+        return wp_get_attachment_image_src($id, 'large');
     }
 
 } 
