@@ -12,6 +12,7 @@ _NOTICE: This theme is still in development. You might miss some features._
 - Two-level dropdown navigation with offcanvas-navigation for smaller devices
 - Main sidebar on the right side and horizontal footer sidebar with auto-columns
 - Support for featured image in posts
+- Gallery-Tag transforms into UIkit slideshow (in development)
 
 ### Screenshot
 

@@ -12,6 +12,7 @@ class UIkitGallery {
      */
     private $defaults = array(
         'type' => 'slideshow',
+        'showdotnav' => true,
         'order' => 'ASC',
         'orderny' => 'menu_order ID'
     );
@@ -101,6 +102,16 @@ class UIkitGallery {
         $output[] = '</ul>';
         $output[] = '<a href="" class="uk-slidenav uk-slidenav-previous"  data-uk-slideshow-item="previous"></a>';
         $output[] = '<a href="" class="uk-slidenav uk-slidenav-next" data-uk-slideshow-item="next"></a>';
+
+        if ($this->attr['showdotnav']) {
+            $output[] = '<ul class="uk-dotnav uk-dotnav-contrast uk-position-bottom uk-text-center">';
+
+            foreach ($this->attachments as $key => $attachment) {
+                $output[] = '<li data-uk-slideshow-item="' . $key . '"><a href=""></a></li>';
+            }
+            $output[] = '</ul>';
+        }
+
         $output[] = '</div>';
 
         return implode(" ", $output);
@@ -118,7 +129,7 @@ class UIkitGallery {
         return $this->getImageByAttachmentID($attachment->ID);
     }
 
-    
+
     /**
      * Gets the image from an id
      * @param $id
