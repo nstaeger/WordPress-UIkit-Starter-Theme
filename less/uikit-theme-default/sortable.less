@@ -1,5 +1,5 @@
 //
-// Component: Modal
+// Component: Sortable
 //
 // ========================================================================
 
@@ -7,24 +7,22 @@
 // Variables
 // ========================================================================
 
-@modal-z-index:                                 @global-z-index + 10;
-
-@modal-dialog-background:                       @global-background;
+@sortable-dragged-z-index:                      @global-z-index + 50;
 
 
 // Component
 // ========================================================================
 
-.hook-modal() {}
+.hook-sortable() {}
 
+.hook-sortable-dragged() {}
 
-// Sub-object: `uk-modal-dialog`
-// ========================================================================
+.hook-sortable-placeholder() {}
 
-.hook-modal-dialog() {}
+.hook-sortable-over() {}
 
 
 // Miscellaneous
 // ========================================================================
 
-.hook-modal-misc() {}
+.hook-sortable-misc() {}

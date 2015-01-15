@@ -22,7 +22,7 @@ gulp.task('default', ['compile-less', 'copy-font', 'minify'], function() {
  * Compile all less-files.
  */
 gulp.task('compile-less', function() {
-    return gulp.src('less/uikit.less')
+    return gulp.src('less/main.less')
         .pipe(less({compress: true}))
         .pipe(gulp.dest('css'));
 });
