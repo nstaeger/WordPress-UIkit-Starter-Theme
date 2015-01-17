@@ -27,7 +27,7 @@
     <title><?php wp_title('-', true, 'right'); ?></title>
 
     <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
-    <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/uikit.css" />
+    <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/main.css" />
 
     <script src="<?php echo get_template_directory_uri(); ?>/js/all.min.js"></script>
     
