@@ -12,7 +12,7 @@ class UIkitGallery
      * @var array Default settings for a gallery
      */
     private $defaults = array(
-        'type' => 'slideshow',
+        'type' => 'grid',
         'showdotnav' => true,
         'order' => 'ASC',
         'orderny' => 'menu_order ID'
@@ -78,6 +78,9 @@ class UIkitGallery
         if ($this->settings['type'] == 'slideshow') {
             return $this->renderSlideshow();
         }
+        else if ($this->settings['type'] == 'grid') {
+            return $this->renderGrid();
+        }
     }
 
 
@@ -118,25 +121,51 @@ class UIkitGallery
 
 
     /**
+     * Renders the gallery like a grid with lightbox
+     */
+    private function renderGrid()
+    {
+        $output = array();
+
+        $output[] = '<div class="uk-grid-width-small-1-2 uk-grid-width-medium-1-3" data-uk-grid>';
+
+        foreach ($this->attachments as $attachment) {
+            $small = $this->getImageByAttachment($attachment, 'medium');
+            $big = $this->getImageByAttachment($attachment);
+            $output[] = '<div>';
+            $output[] = '<a href="' . $big[0] . '" data-uk-lightbox="{group:\'my-group\'}">';
+            $output[] = '<img src=' . $small[0] . ' width="' . $small[1] . '" height="' . $small[2] . '" />';
+            $output[] = '</a>';
+            $output[] = '</div>';
+        }
+
+        $output[] = '</div>';
+
+        return implode(" ", $output);
+    }
+
+
+    /**
      * Gets the image out of an attachment
      *
      * @param $attachment
      * @return array|bool
      */
-    private function getImageByAttachment($attachment)
+    private function getImageByAttachment($attachment, $size = 'large')
     {
-        return $this->getImageByAttachmentID($attachment->ID);
+        return $this->getImageByAttachmentID($attachment->ID, $size);
     }
 
 
     /**
      * Gets the image from an id
      * @param $id
+     * @param string $size
      * @return array|bool
      */
-    private function getImageByAttachmentID($id)
+    private function getImageByAttachmentID($id, $size = 'large')
     {
-        return wp_get_attachment_image_src($id, 'large');
+        return wp_get_attachment_image_src($id, $size);
     }
 
 } 
