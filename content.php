@@ -14,7 +14,7 @@
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(array('uk-article')); ?>>
-    <?php wp_uikit_starter_post_thumbnail(); ?>
+    <?php global $theme; $theme->helpers->postThumbnail(); ?>
 
     <?php
         if ( is_single() ) {

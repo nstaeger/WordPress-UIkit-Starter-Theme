@@ -1,11 +1,12 @@
 <?php
+
 /**
+ * Renders a gallery based on different settings the UIkit way.
  *
  * @author Nicolai Stäger
- * @version 2014-12-09
  */
-
-class UIkitGallery {
+class UIkitGallery
+{
 
     /**
      * @var array Default settings for a gallery
@@ -20,7 +21,7 @@ class UIkitGallery {
     /**
      * @var Attributes for the gallery
      */
-    private $attr;
+    private $settings;
 
     /**
      * @var The current post
@@ -31,7 +32,6 @@ class UIkitGallery {
      * @var The images
      */
     private $attachments;
-
 
 
     /**
@@ -45,28 +45,27 @@ class UIkitGallery {
     {
 
         $this->post = get_post();
-        $this->attr = array_merge($this->defaults, $attributes);
+        $this->settings = array_merge($this->defaults, $attributes);
 
         // If the IDs of the images were passed
-        if ( !empty($this->attr['ids']) ) {
+        if (!empty($this->settings['ids'])) {
             $this->attachments = get_posts(array(
-                'include' => $this->attr['ids'],
-                'post_status' => 'inherit',
-                'post_type' => 'attachment',
-                'post_mime_type' => 'image',
-                'order' => $this->attr['order'],
-                'orderby' => $this->attr['orderby'])
+                    'include' => $this->settings['ids'],
+                    'post_status' => 'inherit',
+                    'post_type' => 'attachment',
+                    'post_mime_type' => 'image',
+                    'order' => $this->settings['order'],
+                    'orderby' => $this->settings['orderby'])
             );
-        }
-        // otherwise get the images attached to the post
+        } // otherwise get the images attached to the post
         else {
             $this->attachments = get_posts(array(
                     'post_parent' => $this->post ? $this->post->ID : 0,
                     'post_status' => 'inherit',
                     'post_type' => 'attachment',
                     'post_mime_type' => 'image',
-                    'order' => $this->attr['order'],
-                    'orderby' => $this->attr['orderby'])
+                    'order' => $this->settings['order'],
+                    'orderby' => $this->settings['orderby'])
             );
         }
 
@@ -76,7 +75,7 @@ class UIkitGallery {
         }
 
         // Render the gallery
-        if ($this->attr['type'] == 'slideshow') {
+        if ($this->settings['type'] == 'slideshow') {
             return $this->renderSlideshow();
         }
     }
@@ -103,7 +102,7 @@ class UIkitGallery {
         $output[] = '<a href="" class="uk-slidenav uk-slidenav-previous"  data-uk-slideshow-item="previous"></a>';
         $output[] = '<a href="" class="uk-slidenav uk-slidenav-next" data-uk-slideshow-item="next"></a>';
 
-        if ($this->attr['showdotnav']) {
+        if ($this->settings['showdotnav']) {
             $output[] = '<ul class="uk-dotnav uk-dotnav-contrast uk-position-bottom uk-text-center">';
 
             foreach ($this->attachments as $key => $attachment) {
