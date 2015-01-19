@@ -17,7 +17,7 @@ _NOTICE: This theme is still in development. You might miss some features._
 
 ### Screenshot
 
-![Screenshot](/screenshot.png)
+![Screenshot](/screenshot-full.png)
 
 
 ## Getting started
