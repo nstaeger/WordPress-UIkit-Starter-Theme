@@ -35,7 +35,7 @@ class ThemeSidebars
         // Add filter for the footer-sidebar
         // Only apply this filter, if not the admin-panel is requested
         if (!is_admin()) {
-            add_filter('dynamic_sidebar_params', $this->dynamic_sidebar_params_footer);
+            add_filter('dynamic_sidebar_params', array($this, 'dynamicFooterParams'));
         }
     }
 
@@ -48,12 +48,12 @@ class ThemeSidebars
      * @return array
      *              The params of the widget
      */
-    private function dynamic_sidebar_params_footer($params)
+    public function dynamicFooterParams($params)
     {
         // only affect the params of the sidebar-footer
         if ($params[0]['id'] == 'sidebar-footer') {
             // Add a uk-width-medium-1-x class, where x is the number of the widgets within the sidebar
-            $class = 'uk-width-medium-1-' . $this->get_widgets_count('sidebar-footer');
+            $class = 'uk-width-medium-1-' . $this->getWidgetsCount('sidebar-footer');
             $params[0]['before_widget'] = preg_replace('(class=")', 'class="' . $class . ' ', $params[0]['before_widget']);
         }
         return $params;
@@ -62,7 +62,7 @@ class ThemeSidebars
     /**
      * Return the number of widgets within a sidebar
      */
-    private function get_widgets_count($sidebar_id)
+    private function getWidgetsCount($sidebar_id)
     {
         $sidebars_widgets = wp_get_sidebars_widgets();
         return (int) count((array) $sidebars_widgets[$sidebar_id]);

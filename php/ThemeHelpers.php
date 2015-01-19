@@ -18,19 +18,14 @@ class ThemeHelpers {
             return;
         }
 
-        if ( is_singular() ) : ?>
-
-            <div>
-                <?php the_post_thumbnail(); ?>
-            </div>
-
-        <?php else : ?>
-
-            <a href="<?php the_permalink(); ?>">
-                <?php the_post_thumbnail(); ?>
-            </a>
-
-        <?php endif; // End is_singular()
+        if ( is_singular() ) {
+            the_post_thumbnail();
+        }
+        else {
+            echo '<a href="<?php the_permalink(); ?>">';
+            the_post_thumbnail();
+            echo '</a>';
+        }
     }
 
 } 
