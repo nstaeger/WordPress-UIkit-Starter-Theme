@@ -26,7 +26,7 @@ $nav_offcanvas = wp_nav_menu(array(
 
 ?>
 <?php if ($nav) : ?>
-    <nav id="navbar" class="uk-navbar uk-margin-large-top">
+    <nav id="navbar" class="uk-navbar">
         <div class="uk-container uk-container-center">
             <?= $nav ?>
             <a href="#offcanvas-menu" class="uk-navbar-toggle uk-visible-small" data-uk-offcanvas></a>
