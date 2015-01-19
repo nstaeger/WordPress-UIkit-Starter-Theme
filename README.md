@@ -13,6 +13,7 @@ _NOTICE: This theme is still in development. You might miss some features._
 - Main sidebar on the right side and horizontal footer sidebar with auto-columns
 - Support for featured image in posts
 - Gallery-tag support with UIkit slideshow and gallery
+- Header-image support
 
 ### Screenshot
 
