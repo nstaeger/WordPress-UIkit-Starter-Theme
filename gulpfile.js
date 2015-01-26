@@ -60,4 +60,5 @@ gulp.task('minify', function() {
  */
 gulp.task('watch', function() {
     gulp.watch('less/**.less', ['compile-less']);
+    gulp.watch(['js/**', '!js/all.min.js'], ['minify']);
 });
