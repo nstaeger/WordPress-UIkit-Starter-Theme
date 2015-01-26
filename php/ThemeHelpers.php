@@ -28,4 +28,27 @@ class ThemeHelpers {
         }
     }
 
+    /**
+     * Displays the pagination for the posts overview page (and search and archive)
+     */
+    public function getPostsPagination()
+    {
+        $pagination = paginate_links(array('type' => 'array', 'mid_size' => 3, 'prev_next' => false));
+
+        if ($pagination == null) return;
+
+        $returner = array();
+        $returner[] = '<ul class="uk-pagination">';
+        $returner[] = '<li class="uk-pagination-previous">' . get_previous_posts_link() . '</li>';
+
+        for ($i = 0; $i < sizeof($pagination); $i++)
+        {
+            $returner[] = '<li class="uk-hidden-small">' . $pagination[$i] . '</li>';
+        }
+
+        $returner[] = '<li class="uk-pagination-next">' . get_next_posts_link() . '</li>';
+        $returner[] = '</ul>';
+        return implode('', $returner);
+    }
+
 } 

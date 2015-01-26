@@ -19,6 +19,9 @@ get_template_part('elements/base', 'navigation');
             the_post();
             get_template_part('content'/*, get_post_format()*/);
         }
+
+        // Previous/next page navigation.
+        echo $theme->helpers->getPostsPagination();
     }
     else {
         echo '<p>Nothing found here. Sorry!</p>';
