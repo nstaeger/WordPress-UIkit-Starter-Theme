@@ -1,18 +1,28 @@
 <?php
 /**
  * element for header
- * 
- * @author nstaeger
- * @since 2014-08-31
  */
+
+$header_style = '';
+if ($headerImageUrl = get_header_image()) {
+    $header_style = 'style="height: 180px; background-image: url(' . $headerImageUrl . ');"';
+}
+
+$text_style = '';
+if ($color = get_header_textcolor()) {
+    $text_style = 'style="color: #' . $color . ';"';
+}
+
 ?>
-<header id="header" class="uk-cover-background" style="min-height: 190px; background-image: url(<?= header_image(); ?>);">
+<header id="header" class="uk-cover-background" <?= $header_style ?>>
     <div class="uk-container uk-container-center">
-        <h1 class="uk-margin-large-top" style="color: #<?= get_header_textcolor(); ?>">
+        <h1 class="uk-margin-large-top" <?= $text_style ?>>
             <a href="<?= esc_url(home_url('/')); ?>" title="<?= esc_attr(get_bloginfo('name', 'display')); ?>" class="uk-link-reset">
-                <?php bloginfo( 'name' ); ?>
+                <?php bloginfo('name'); ?>
             </a>
         </h1>
-        <span style="color: #<?= get_header_textcolor(); ?>"><?php bloginfo( 'description' ); ?></span>
+        <?php if ($description = get_bloginfo('description')) : ?>
+            <span <?= $text_style ?>><?= $description ?></span>
+        <?php endif; ?>
     </div>
 </header>

@@ -1,9 +1,6 @@
 <?php
 /**
  * element for footer
- * 
- * @author nstaeger
- * @since 2014-08-31
  */
 
 $nav_footer = wp_nav_menu(array(
@@ -14,6 +11,7 @@ $nav_footer = wp_nav_menu(array(
     'echo' => false,
     'fallback_cb' => false
 ));
+
 ?>
 <footer id="footer" class="uk-margin-large-top uk-panel uk-panel-box">
     <div class="uk-container uk-container-center">
