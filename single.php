@@ -21,7 +21,7 @@ if (have_posts()) {
         }
     }
 } else {
-    echo '<p>Nothing found here. Sorry!</p>';
+    echo '<p>' . __('Nothing found here. Sorry!', 'uikit-starter') . '</p>';
 }
 
 get_template_part('elements/base/postcontent');
