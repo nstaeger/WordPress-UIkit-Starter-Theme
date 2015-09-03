@@ -16,6 +16,9 @@ class ThemeSupport
 
         // add a customizable header (with image and color)
         add_theme_support('custom-header', array('height' => 400, 'width' => 2500, 'default-text-color' => '444',));
+
+        // support for post types
+        add_theme_support('post-formats', array('image', 'gallery', 'video', 'link', 'quote'));
     }
 
 } 
