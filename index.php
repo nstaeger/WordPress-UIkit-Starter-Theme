@@ -4,15 +4,15 @@
  */
 
 get_header();
-get_template_part('elements/base', 'header');
-get_template_part('elements/base', 'navigation');
+get_template_part('elements/base/header');
+get_template_part('elements/base/navigation');
 
-get_template_part('elements/base', 'precontent');
+get_template_part('elements/base/precontent');
 
 if (have_posts()) {
     while (have_posts()) {
         the_post();
-        get_template_part('elements/content'/*, get_post_format()*/);
+        get_template_part('elements/content/content'/*, get_post_format()*/);
     }
 
     // Previous/next page navigation.
@@ -21,7 +21,7 @@ if (have_posts()) {
     echo '<p>Nothing found here. Sorry!</p>';
 }
 
-get_template_part('elements/base', 'postcontent');
+get_template_part('elements/base/postcontent');
 
-get_template_part('elements/base', 'footer');
+get_template_part('elements/base/footer');
 get_footer();
