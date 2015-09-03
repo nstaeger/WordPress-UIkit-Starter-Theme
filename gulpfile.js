@@ -40,7 +40,6 @@ gulp.task('minify', function() {
     return gulp.src([
             'bower_components/jquery/dist/jquery.js',
             'bower_components/uikit/js/uikit.js',
-            'bower_components/uikit/js/components/cover.js',
             'bower_components/uikit/js/components/grid.js',
             'bower_components/uikit/js/components/lightbox.js',
             'bower_components/uikit/js/components/slideshow.js',
