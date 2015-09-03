@@ -28,6 +28,28 @@ class ThemeHelpers
     }
 
     /**
+     * Gets the first image attached to the post.
+     */
+    public function getFirstPostImage($post_id)
+    {
+        $args = array(
+            'post_type'      => 'attachment',
+            'post_mime_type' => 'image/jpeg',
+            'post_parent'    => $post_id,
+            'numberposts'    => 1,
+            'orderby'        => 'menu_order'
+        );
+        $attachments = get_posts($args);
+
+        if ($attachments && is_array($attachments) && !empty($attachments)) {
+            return $attachments[0];
+        }
+        else {
+            return false;
+        }
+    }
+
+    /**
      * Displays the pagination for the posts overview page (and search and archive)
      */
     public function getPostsPagination()
