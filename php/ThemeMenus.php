@@ -2,8 +2,6 @@
 
 /**
  * Manages all menu-related modifications.
- *
- * @author Nicolai Stäger
  */
 class ThemeMenus
 {

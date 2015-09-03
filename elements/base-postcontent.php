@@ -4,9 +4,6 @@
  * should be rendered directly after the dynamic content
  * handles displaying of the sidebar (or no sidebar)
  * must be opend via the element precontent
- *
- * @author nstaeger
- * @since 2014-10-24
  */
 ?>
 

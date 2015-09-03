@@ -2,8 +2,6 @@
 
 /**
  * Renders a gallery based on different settings the UIkit way.
- *
- * @author Nicolai Stäger
  */
 class UIkitGallery
 {
@@ -12,10 +10,10 @@ class UIkitGallery
      * @var array Default settings for a gallery
      */
     private $defaults = array(
-        'type' => 'grid',
+        'type'       => 'grid',
         'showdotnav' => true,
-        'order' => 'ASC',
-        'orderny' => 'menu_order ID'
+        'order'      => 'ASC',
+        'orderny'    => 'menu_order ID'
     );
 
     /**
@@ -39,6 +37,7 @@ class UIkitGallery
      * Prepares content before passing rendering to specific function.
      *
      * @param $attributes
+     *
      * @return mixed
      */
     public function render($attributes)
@@ -50,22 +49,22 @@ class UIkitGallery
         // If the IDs of the images were passed
         if (!empty($this->settings['ids'])) {
             $this->attachments = get_posts(array(
-                    'include' => $this->settings['ids'],
-                    'post_status' => 'inherit',
-                    'post_type' => 'attachment',
+                    'include'        => $this->settings['ids'],
+                    'post_status'    => 'inherit',
+                    'post_type'      => 'attachment',
                     'post_mime_type' => 'image',
-                    'order' => $this->settings['order'],
-                    'orderby' => $this->settings['orderby'])
+                    'order'          => $this->settings['order'],
+                    'orderby'        => $this->settings['orderby'])
             );
         } // otherwise get the images attached to the post
         else {
             $this->attachments = get_posts(array(
-                    'post_parent' => $this->post ? $this->post->ID : 0,
-                    'post_status' => 'inherit',
-                    'post_type' => 'attachment',
+                    'post_parent'    => $this->post ? $this->post->ID : 0,
+                    'post_status'    => 'inherit',
+                    'post_type'      => 'attachment',
                     'post_mime_type' => 'image',
-                    'order' => $this->settings['order'],
-                    'orderby' => $this->settings['orderby'])
+                    'order'          => $this->settings['order'],
+                    'orderby'        => $this->settings['orderby'])
             );
         }
 
@@ -77,8 +76,7 @@ class UIkitGallery
         // Render the gallery
         if ($this->settings['type'] == 'slideshow') {
             return $this->renderSlideshow();
-        }
-        else if ($this->settings['type'] == 'grid') {
+        } else if ($this->settings['type'] == 'grid') {
             return $this->renderGrid();
         }
     }
@@ -149,6 +147,7 @@ class UIkitGallery
      * Gets the image out of an attachment
      *
      * @param $attachment
+     *
      * @return array|bool
      */
     private function getImageByAttachment($attachment, $size = 'large')
@@ -159,8 +158,10 @@ class UIkitGallery
 
     /**
      * Gets the image from an id
-     * @param $id
+     *
+     * @param        $id
      * @param string $size
+     *
      * @return array|bool
      */
     private function getImageByAttachmentID($id, $size = 'large')

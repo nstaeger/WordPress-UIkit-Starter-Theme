@@ -12,11 +12,10 @@ require('walker/WordpressUikitMenuWalker.php');
 
 /**
  * This class is responsible for setting up all theme-specific stuff.
- *
- * @author Nicolai Stäger
  */
 class Theme
 {
+
     public $filters;
     public $helpers;
     public $menus;

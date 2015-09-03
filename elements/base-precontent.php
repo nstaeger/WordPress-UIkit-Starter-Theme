@@ -4,9 +4,6 @@
  * should be rendered directly before the dynamic content
  * handles displaying of the sidebar (or no sidebar)
  * must be closed via the element postcontent
- *
- * @author nstaeger
- * @since 2014-10-24
  */
 ?>
 

@@ -2,8 +2,6 @@
 
 /**
  * Manages all filter-related modifications.
- *
- * @author Nicolai Stäger
  */
 class ThemeFilters
 {
@@ -17,12 +15,10 @@ class ThemeFilters
     /**
      * Create custom title element
      *
-     * @param string $title
-     *                Default title text for current view.
-     * @param string $sep
-     *                Optional separator.
-     * @return string
-     *                The filtered title.
+     * @param string $title Default title text for current view.
+     * @param string $sep   Optional separator.
+     *
+     * @return string The filtered title.
      */
     public function titleFilter($title, $sep)
     {

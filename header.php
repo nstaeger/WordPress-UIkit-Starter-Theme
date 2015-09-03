@@ -4,9 +4,6 @@
  *
  * Displays all of the <head> section and everything up till
  * and the opening body-tag
- *
- * @author nstaeger
- * @since 2014-08-31
  */
 
 
@@ -21,16 +18,16 @@
 <html <?php language_attributes(); ?> class="uk-height-1-1">
 <!--<![endif]-->
 <head>
-    <meta charset="<?php bloginfo( 'charset' ); ?>" />
+    <meta charset="<?php bloginfo('charset'); ?>"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title><?php wp_title('-', true, 'right'); ?></title>
 
-    <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
-    <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/main.css" />
+    <link rel="pingback" href="<?php bloginfo('pingback_url'); ?>"/>
+    <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/main.css"/>
 
     <script src="<?php echo get_template_directory_uri(); ?>/js/all.min.js"></script>
-    
+
     <?php wp_head(); ?>
 </head>
 

@@ -2,10 +2,9 @@
 
 /**
  * Provides some helpers to use within the views.
- *
- * @author Nicolai Stäger
  */
-class ThemeHelpers {
+class ThemeHelpers
+{
 
     /**
      * Display an optional post thumbnail.
@@ -13,15 +12,15 @@ class ThemeHelpers {
      * Wraps the post thumbnail in an anchor element on index
      * views, or a div element when on single views.
      */
-    public function postThumbnail() {
-        if ( post_password_required() || is_attachment() || ! has_post_thumbnail() ) {
+    public function postThumbnail()
+    {
+        if (post_password_required() || is_attachment() || !has_post_thumbnail()) {
             return;
         }
 
-        if ( is_singular() ) {
+        if (is_singular()) {
             the_post_thumbnail();
-        }
-        else {
+        } else {
             echo '<a href="<?php the_permalink(); ?>">';
             the_post_thumbnail();
             echo '</a>';
@@ -41,13 +40,13 @@ class ThemeHelpers {
         $returner[] = '<ul class="uk-pagination">';
         $returner[] = '<li class="uk-pagination-previous">' . get_previous_posts_link() . '</li>';
 
-        for ($i = 0; $i < sizeof($pagination); $i++)
-        {
+        for ($i = 0; $i < sizeof($pagination); $i++) {
             $returner[] = '<li class="uk-hidden-small">' . $pagination[$i] . '</li>';
         }
 
         $returner[] = '<li class="uk-pagination-next">' . get_next_posts_link() . '</li>';
         $returner[] = '</ul>';
+
         return implode('', $returner);
     }
 

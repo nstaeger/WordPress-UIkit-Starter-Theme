@@ -5,11 +5,11 @@
 
 $nav_footer = wp_nav_menu(array(
     'theme_location' => 'footer',
-    'menu_class' => 'uk-subnav uk-subnav-line',
-    'depth' => 1,
-    'walker' => new WordpressUikitMenuWalker('inline'),
-    'echo' => false,
-    'fallback_cb' => false
+    'menu_class'     => 'uk-subnav uk-subnav-line',
+    'depth'          => 1,
+    'walker'         => new WordpressUikitMenuWalker('inline'),
+    'echo'           => false,
+    'fallback_cb'    => false
 ));
 
 ?>
@@ -25,7 +25,9 @@ $nav_footer = wp_nav_menu(array(
 
         <div class="uk-margin-bottom uk-text-center uk-text-muted">
             <div class="uk-panel">
-                <p>uikit-starter theme made by <a href="http://www.nstaeger.de/" class="uk-link-reset" target="_blank">nstaeger.de</a></p>
+                <p>uikit-starter theme made by
+                    <a href="http://www.nstaeger.de/" class="uk-link-reset" target="_blank">nstaeger.de</a>
+                </p>
             </div>
         </div>
     </div>

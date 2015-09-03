@@ -1,27 +1,24 @@
 <?php
 /**
  * element for navigation and offcanvas navigation
- * 
- * @author nstaeger
- * @since 2014-08-31
  */
 
 $nav = wp_nav_menu(array(
     'theme_location' => 'main',
-    'menu_class' => 'uk-navbar-nav uk-hidden-small',
-    'depth' => 2,
-    'walker' => new WordpressUikitMenuWalker('navbar'),
-    'echo' => false,
-    'fallback_cb' => false
+    'menu_class'     => 'uk-navbar-nav uk-hidden-small',
+    'depth'          => 2,
+    'walker'         => new WordpressUikitMenuWalker('navbar'),
+    'echo'           => false,
+    'fallback_cb'    => false
 ));
 
 $nav_offcanvas = wp_nav_menu(array(
     'theme_location' => 'main',
-    'menu_class' => 'uk-nav uk-nav-offcanvas',
-    'depth' => 2,
-    'walker' => new WordpressUikitMenuWalker('navbar'),
-    'echo' => false,
-    'fallback_cb' => false
+    'menu_class'     => 'uk-nav uk-nav-offcanvas',
+    'depth'          => 2,
+    'walker'         => new WordpressUikitMenuWalker('navbar'),
+    'echo'           => false,
+    'fallback_cb'    => false
 ));
 
 ?>

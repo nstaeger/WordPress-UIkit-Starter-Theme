@@ -2,8 +2,6 @@
 
 /**
  * Manages all shortcode-related modifications.
- *
- * @author Nicolai Stäger
  */
 class ThemeShortcodes
 {
@@ -19,8 +17,10 @@ class ThemeShortcodes
     /**
      * Output the gallery shortcode the UIkit way
      */
-    public function galleryShortcode($attr) {
+    public function galleryShortcode($attr)
+    {
         $gallery = new UIkitGallery();
+
         return $gallery->render($attr);
     }
 

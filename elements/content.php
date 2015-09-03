@@ -4,12 +4,8 @@
  *
  * Used for both single and index/archive/search.
  *
- * TODOs
- * - Categories: only print if any set
- * - Localize
- *
- * @author nstaeger
- * @since  2014-08-31
+ * TODO Categories: only print if any set
+ * TODO Localize
  */
 ?>
 

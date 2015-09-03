@@ -2,8 +2,6 @@
 
 /**
  * Manages all sidebar-related modifications.
- *
- * @author Nicolai Stäger
  */
 class ThemeSidebars
 {
@@ -12,24 +10,24 @@ class ThemeSidebars
     {
         // register main sidebar
         register_sidebar(array(
-            'name' => 'Sidebar',
-            'id' => 'sidebar-main',
-            'description' => 'Main Sidebar on the left side.',
+            'name'          => 'Sidebar',
+            'id'            => 'sidebar-main',
+            'description'   => 'Main Sidebar on the left side.',
             'before_widget' => '<div id="%1$s" class="%2$s nst-widget uk-panel">',
-            'after_widget' => '</div>',
-            'before_title' => '<h2>',
-            'after_title' => '</h2>'
+            'after_widget'  => '</div>',
+            'before_title'  => '<h2>',
+            'after_title'   => '</h2>'
         ));
 
         // register footer sidebar
         register_sidebar(array(
-            'name' => 'Footer Sidebar',
-            'id' => 'sidebar-footer',
-            'description' => 'Horizontal Sidebar in the footer',
+            'name'          => 'Footer Sidebar',
+            'id'            => 'sidebar-footer',
+            'description'   => 'Horizontal Sidebar in the footer',
             'before_widget' => '<div id="%1$s" class="%2$s nst-widget uk-panel">',
-            'after_widget' => '</div>',
-            'before_title' => '<h2>',
-            'after_title' => '</h2>'
+            'after_widget'  => '</div>',
+            'before_title'  => '<h2>',
+            'after_title'   => '</h2>'
         ));
 
         // Add filter for the footer-sidebar
@@ -43,10 +41,9 @@ class ThemeSidebars
     /**
      * Filters the params for the sidebars
      *
-     * @param array $params
-     *              The params of the widget
-     * @return array
-     *              The params of the widget
+     * @param array $params The params of the widget
+     *
+     * @return array The params of the widget
      */
     public function dynamicFooterParams($params)
     {
@@ -56,6 +53,7 @@ class ThemeSidebars
             $class = 'uk-width-medium-1-' . $this->getWidgetsCount('sidebar-footer');
             $params[0]['before_widget'] = preg_replace('(class=")', 'class="' . $class . ' ', $params[0]['before_widget']);
         }
+
         return $params;
     }
 
@@ -65,7 +63,8 @@ class ThemeSidebars
     private function getWidgetsCount($sidebar_id)
     {
         $sidebars_widgets = wp_get_sidebars_widgets();
-        return (int) count((array) $sidebars_widgets[$sidebar_id]);
+
+        return (int)count((array)$sidebars_widgets[$sidebar_id]);
     }
 
 } 
