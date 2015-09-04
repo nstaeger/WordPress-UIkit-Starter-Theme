@@ -42,9 +42,10 @@
 
 @button-disabled-color:                         @global-muted-color;
 
-@button-link-color:                             @global-link-color;
-@button-link-hover-color:                       @global-link-hover-color;
-@button-link-disabled-color:                    @global-muted-color;
+@button-link-color:                             @global-primary-color;
+@button-link-hover-color:                       @global-link-color;
+@button-link-disabled-color:                    @global-disabled-color;
+@button-link-hover-text-decoration:             none;
 
 
 // Component
@@ -97,7 +98,18 @@
 // Modifier: `uk-button-link`
 // ========================================================================
 
-.hook-button-link() {}
+.hook-button-link() {
+    border: transparent;
+    position: relative;
+    padding-left: 0;
+    padding-right: 32px;
+    color: @button-link-color;
+    text-transform: uppercase;
+
+    &:hover { color: @button-link-color; }
+
+    &:focus { color: @button-link-color; }
+}
 
 
 // Size modifiers

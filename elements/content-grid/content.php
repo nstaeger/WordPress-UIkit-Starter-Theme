@@ -50,9 +50,13 @@ $postLink = esc_url(get_permalink());
         </p>
 
         <?php if ($excerpt = get_the_excerpt()) : ?>
-            <div class="nst-entry-summary">
+            <div class="uk-margin">
                 <?= $excerpt; ?>
             </div>
         <?php endif; ?>
+
+        <p>
+            <a href="<?= $postLink ?>" class="uk-button uk-button-link"><?= __('Read more', 'uikit-starter') ?></a>
+        </p>
     </div>
 </div>
