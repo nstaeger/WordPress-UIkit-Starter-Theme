@@ -15,9 +15,9 @@
 
     <?php
     if (is_single()) {
-        the_title('<h1 class="uk-article-title">', '</h1>');
+        the_title('<h1 class="uk-article-title tm-article-title tm-article-title-' . get_post_format() . '">', '</h1>');
     } else {
-        the_title('<h1 class="uk-article-title"><a href="' . esc_url(get_permalink()) . '" class="uk-link-reset" rel="bookmark">', '</a></h1>');
+        the_title('<h1 class="uk-article-title tm-article-title tm-article-title-' . get_post_format() . '"><a href="' . esc_url(get_permalink()) . '" class="uk-link-reset" rel="bookmark">', '</a></h1>');
     }
     ?>
     <p class="uk-article-meta">
@@ -36,8 +36,7 @@
         </span>
         <?php if (!post_password_required() && (comments_open() || get_comments_number())) : ?>
             <span class="nst-comments uk-margin-small-left uk-link-reset">
-                <?php comments_popup_link(
-                    '<i class="uk-icon-comment"></i> ' . __('Leave a comment', 'uikit-starter'), '<i class="uk-icon-comment"></i> 1', '<i class="uk-icon-comment"></i> %'); ?>
+                <?php comments_popup_link('<i class="uk-icon-comment"></i> ' . __('Leave a comment', 'uikit-starter'), '<i class="uk-icon-comment"></i> 1', '<i class="uk-icon-comment"></i> %'); ?>
             </span>
         <?php endif; ?>
         <?php edit_post_link('<i class="uk-icon-edit"></i> Edit', '<span class="nst-edit-link uk-margin-small-left uk-link-reset">', '</span>'); ?>

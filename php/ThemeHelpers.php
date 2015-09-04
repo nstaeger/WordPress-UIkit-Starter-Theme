@@ -29,9 +29,17 @@ class ThemeHelpers
 
     /**
      * Gets the first image attached to the post.
+     *
+     * @param $post_id
+     *
+     * @return int|bool
      */
     public function getFirstPostImage($post_id)
     {
+        if (has_post_thumbnail()) {
+            return get_post_thumbnail_id();
+        }
+
         $args = array(
             'post_type'      => 'attachment',
             'post_mime_type' => 'image/jpeg',
@@ -42,11 +50,11 @@ class ThemeHelpers
         $attachments = get_posts($args);
 
         if ($attachments && is_array($attachments) && !empty($attachments)) {
-            return $attachments[0];
-        }
-        else {
+            return $attachments[0]->ID;
+        } else {
             return false;
         }
+
     }
 
     /**

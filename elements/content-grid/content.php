@@ -16,17 +16,24 @@ $postLink = esc_url(get_permalink());
 <div>
     <div class="uk-panel uk-panel-box">
 
-        <?php if ($image = $theme->helpers->getFirstPostImage(get_the_ID())) : ?>
+        <?php if ($imageID = $theme->helpers->getFirstPostImage(get_the_ID())) : ?>
             <div class="uk-text-center uk-panel-teaser">
                 <div class="uk-overlay uk-overlay-hover">
-                    <?= wp_get_attachment_image($image->ID, 'grid-preview', false, array('class' => 'uk-overlay-scale')); ?>
-                    <div class="uk-overlay-panel uk-overlay-background uk-overlay-icon uk-overlay-fade"></div>
+                    <?= wp_get_attachment_image($imageID, 'grid-preview', false, array('class' => 'uk-overlay-scale')); ?>
+                    <div class="uk-overlay-panel uk-overlay-background uk-overlay-icon uk-overlay-fade tm-overlay-icon-<?= get_post_format() ?>"></div>
                     <a href="<?= $postLink ?>" class="uk-position-cover"></a>
+                </div>
+            </div>
+            <?php else: ?>
+            <div class="uk-text-center uk-panel-teaser">
+                <div class="uk-margin-large">
+                    NO IMAGE :(
                 </div>
             </div>
         <?php endif; ?>
 
-        <?php the_title('<h2 class="uk-panel-title"><a href="' . $postLink . '" class="uk-link-reset" rel="bookmark">', '</a></h2>'); ?>
+        <?php the_title('<h2 class="uk-panel-title tm-article-title tm-article-title-' . get_post_format() . '"><a href="' . $postLink . '" class="uk-link-reset" rel="bookmark">', '</a></h2>'); ?>
+
         <p class="uk-article-meta">
             <?php printf(
                 '<span class="nst-author uk-link-reset"><a href="%1$s" rel="author"><i class="uk-icon-user"></i> %2$s</a></span>',

@@ -10,6 +10,9 @@ class ThemeFilters
     {
         // Add Filter for the title
         add_filter('wp_title', array($this, 'titleFilter'), 10, 2);
+
+        // Reduce the number of words in the excerpt
+        add_filter('excerpt_length', array($this, 'customExcerptLength'), 999);
     }
 
     /**
@@ -36,6 +39,11 @@ class ThemeFilters
         }
 
         return $title;
+    }
+
+    public function customExcerptLength($length)
+    {
+        return 20;
     }
 
 } 
