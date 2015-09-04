@@ -9,6 +9,8 @@
  */
 
 global $theme;
+
+$postLink = esc_url(get_permalink());
 ?>
 
 <div>
@@ -19,11 +21,12 @@ global $theme;
                 <div class="uk-overlay uk-overlay-hover">
                     <?= wp_get_attachment_image($image->ID, 'grid-preview', false, array('class' => 'uk-overlay-scale')); ?>
                     <div class="uk-overlay-panel uk-overlay-background uk-overlay-icon uk-overlay-fade"></div>
+                    <a href="<?= $postLink ?>" class="uk-position-cover"></a>
                 </div>
             </div>
         <?php endif; ?>
 
-        <?php the_title('<h2 class="uk-panel-title"><a href="' . esc_url(get_permalink()) . '" class="uk-link-reset" rel="bookmark">', '</a></h2>'); ?>
+        <?php the_title('<h2 class="uk-panel-title"><a href="' . $postLink . '" class="uk-link-reset" rel="bookmark">', '</a></h2>'); ?>
         <p class="uk-article-meta">
             <?php printf(
                 '<span class="nst-author uk-link-reset"><a href="%1$s" rel="author"><i class="uk-icon-user"></i> %2$s</a></span>',
