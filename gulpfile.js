@@ -19,7 +19,7 @@ gulp.task('default', ['compile-less', 'copy-font', 'minify']);
 /**
  * Compile all less-files.
  */
-gulp.task('compile-less', function() {
+gulp.task('compile', function() {
     return gulp.src('less/main.less')
         .pipe(less({compress: true}))
         .pipe(gulp.dest('css'));
@@ -57,7 +57,7 @@ gulp.task('minify', function() {
 /**
  * Watch the less-directory for changes and compile-less if needed.
  */
-gulp.task('watch', function() {
-    gulp.watch('less/**.less', ['compile-less']);
+gulp.task('watch', ['compile', 'minify'], function() {
+    gulp.watch('less/**/*.less', ['compile']);
     gulp.watch(['js/**', '!js/all.min.js'], ['minify']);
 });
