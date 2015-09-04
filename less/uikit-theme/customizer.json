@@ -39,8 +39,8 @@
             ],
             "options": [
                 {"name": "Fade", "value": "uk-fade"},
-                {"name": "Slide-Down", "value": "uk-slide-bottom-fixed"},
-                {"name": "Slide-Up", "value": "uk-slide-top-fixed"}
+                {"name": "Slide-Up", "value": "uk-slide-bottom-fixed"},
+                {"name": "Slide-Down", "value": "uk-slide-top-fixed"}
             ]
         },
         {
@@ -169,6 +169,13 @@
             ]
         },
         {
+            "label": "Block",
+            "advanced": true,
+            "vars": [
+                "@block-*"
+            ]
+        },
+        {
             "label": "Breadcrumb",
             "advanced": true,
             "vars": [
@@ -194,6 +201,14 @@
             "advanced": true,
             "vars": [
                 "@comment-*"
+            ]
+        },
+        {
+            "label": "Contrast",
+            "advanced": true,
+            "vars": [
+                "@contrast-color",
+                "@contrast-inverted-color"
             ]
         },
         {
@@ -288,13 +303,6 @@
             ]
         },
         {
-            "label": "Progress",
-            "advanced": true,
-            "vars": [
-                "@progress-*"
-            ]
-        },
-        {
             "label": "Subnav",
             "advanced": true,
             "vars": [
@@ -327,13 +335,6 @@
             "advanced": true,
             "vars": [
                 "@thumbnail-*"
-            ]
-        },
-        {
-            "label": "Tooltip",
-            "advanced": true,
-            "vars": [
-                "@tooltip-*"
             ]
         },
         {

@@ -37,7 +37,6 @@
 @base-hr-border:                                @global-border;
 
 @base-blockquote-border:                        @global-border;
-@base-blockquote-small-color:                   @global-muted-color;
 @base-blockquote-font-size:                     round((@global-font-size * 1.14)); // 16px / 18px
 @base-blockquote-line-height:                   round((@base-blockquote-font-size * 1.36)); // 22px / 24px
 
@@ -54,12 +53,30 @@
 .hook-base-body() {}
 
 
-// Code and preformatted text
+// Text-level semantics
 // ========================================================================
 
 .hook-base-code() {}
 
-.hook-base-code-reset() {}
+
+// Headings
+// ========================================================================
+
+.hook-base-h1() {}
+
+.hook-base-h2() {}
+
+.hook-base-h3() {}
+
+.hook-base-h4() {}
+
+.hook-base-h5() {}
+
+.hook-base-h6() {}
+
+
+// Preformatted text
+// ========================================================================
 
 .hook-base-pre() {}
 
