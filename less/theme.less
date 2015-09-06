@@ -12,6 +12,29 @@
 
 
 
+.tm-container-article {
+
+    max-width: 700px;
+
+    .tm-article-title {
+        &::before {
+            left: 50%;
+            margin-left: (@article-title-border-width / -2);
+        }
+    }
+}
+
+.tm-pre-content {
+
+    @media (min-width: @breakpoint-large) {
+        max-width: 1000px;
+    }
+
+    @media (max-width: @breakpoint-medium-max) {
+        padding: 0;
+    }
+}
+
 .tm-article-title {
     position: relative;
     padding-bottom: @article-title-padding-bottom;

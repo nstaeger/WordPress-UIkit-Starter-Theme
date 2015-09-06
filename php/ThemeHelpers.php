@@ -40,14 +40,7 @@ class ThemeHelpers
             return get_post_thumbnail_id();
         }
 
-        $args = array(
-            'post_type'      => 'attachment',
-            'post_mime_type' => 'image/jpeg',
-            'post_parent'    => $post_id,
-            'numberposts'    => 1,
-            'orderby'        => 'menu_order'
-        );
-        $attachments = get_posts($args);
+        $attachments = $this->getPostImages($post_id, 1);
 
         if ($attachments && is_array($attachments) && !empty($attachments)) {
             return $attachments[0]->ID;
@@ -55,6 +48,67 @@ class ThemeHelpers
             return false;
         }
 
+    }
+
+    /**
+     * Gets all images attached to the post.
+     *
+     * @param int $post_id
+     * @param int $limit
+     *
+     * @return bool|int
+     */
+    public function getPostImages($post_id, $limit = -1)
+    {
+        $args = array(
+            'post_type'      => 'attachment',
+            'post_mime_type' => 'image/jpeg',
+            'post_parent'    => $post_id,
+            'numberposts'    => $limit,
+            'orderby'        => 'menu_order'
+        );
+
+        return get_posts($args);
+    }
+
+    /**
+     * Get the Media to be displayed before the content.
+     */
+    public function renderPostPreContent()
+    {
+        $post_id = get_the_ID();
+        $format = get_post_format();
+
+        if ($format == 'gallery') {
+
+            $attachments = $this->getPostImages($post_id);
+
+            if ($attachments && is_array($attachments) && !empty($attachments)) {
+                echo '<div class="uk-slidenav-position" data-uk-slideshow="{animation: \'swipe\', autoplay: true, autoplayInterval: 5000}">';
+                echo '<ul class="uk-slideshow">';
+
+                foreach ($attachments as $attachment) {
+                    echo '<li>';
+                    echo wp_get_attachment_image($attachment->ID, 'large');
+                    echo '</li>';
+                }
+
+                echo '</ul>';
+                echo '<a href="" class="uk-slidenav uk-slidenav-contrast uk-slidenav-previous" data-uk-slideshow-item="previous"></a>';
+                echo '<a href="" class="uk-slidenav uk-slidenav-contrast uk-slidenav-next" data-uk-slideshow-item="next"></a>';
+                echo '<ul class="uk-dotnav uk-dotnav-contrast uk-position-bottom uk-flex-center">';
+
+                foreach ($attachments as $index => $attachment) {
+                    echo '<li data-uk-slideshow-item="' . $index . '"><a href=""></a></li>';
+                }
+
+                echo '</ul>';
+                echo '</div>';
+            }
+
+        } else if ($image_id = $this->getFirstPostImage($post_id)) {
+            echo wp_get_attachment_image($image_id, 'large');
+        }
     }
 
     /**
