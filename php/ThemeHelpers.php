@@ -80,4 +80,29 @@ class ThemeHelpers
         return implode('', $returner);
     }
 
-} 
+    /**
+     * Renders a grid around the content, if the sidebar is active.
+     */
+    public function wrapContentBefore()
+    {
+        if (is_active_sidebar('sidebar-main')) {
+            echo '<div class="uk-grid" data-uk-grid-margin >';
+            echo '<div class="uk-width-medium-3-4">';
+        }
+    }
+
+    /**
+     * Renders a grid around the content, if the sidebar is active.
+     */
+    public function wrapContentAfter()
+    {
+        if (is_active_sidebar('sidebar-main')) {
+            echo '</div>';
+            echo '<div class="uk-width-medium-1-4">';
+            get_sidebar();
+            echo '</div>';
+            echo '</div>';
+        }
+    }
+
+}
