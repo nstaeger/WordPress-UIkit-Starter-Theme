@@ -20,7 +20,7 @@ class ThemeSupport
         // support for post types
         add_theme_support('post-formats', array('image', 'gallery', 'video', 'link', 'quote'));
 
-        add_image_size('grid-preview', 700, 400, true);
+        add_image_size('grid-preview', 711, 400, true);
     }
 
 } 

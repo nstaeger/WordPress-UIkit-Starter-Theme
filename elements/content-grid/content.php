@@ -26,8 +26,10 @@ $postLink = esc_url(get_permalink());
             </div>
             <?php else: ?>
             <div class="uk-text-center uk-panel-teaser">
-                <div class="uk-margin-large">
-                    NO IMAGE :(
+                <div class="uk-overlay uk-overlay-hover">
+                    <img src="<?= get_template_directory_uri() ?>/img/placeholder.jpg" class="uk-overlay-scale" />
+                    <div class="uk-overlay-panel uk-overlay-background uk-overlay-icon uk-overlay-fade tm-overlay-icon-<?= get_post_format() ?>"></div>
+                    <a href="<?= $postLink ?>" class="uk-position-cover"></a>
                 </div>
             </div>
         <?php endif; ?>
