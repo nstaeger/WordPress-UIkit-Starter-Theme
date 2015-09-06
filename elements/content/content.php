@@ -7,11 +7,12 @@
  * TODO Categories: only print if any set
  * TODO Localize
  */
+
+$theme = Theme::get();
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(array('uk-article')); ?>>
-    <?php global $theme;
-    $theme->helpers->postThumbnail(); ?>
+    <?php $theme->helpers->postThumbnail(); ?>
 
     <?php
     if (is_single()) {

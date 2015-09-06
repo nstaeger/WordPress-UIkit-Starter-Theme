@@ -8,7 +8,7 @@
  * TODO Localize
  */
 
-global $theme;
+$theme = Theme::get();
 
 $postLink = esc_url(get_permalink());
 ?>
