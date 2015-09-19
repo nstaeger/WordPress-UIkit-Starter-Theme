@@ -1,37 +1,31 @@
+@article-title-padding-bottom: 15px;
+@article-title-border-height: 2px;
+@article-title-border-width: 70px;
+@article-title-border-color: @global-primary-color;
+@article-title-border-color-image: #F19F35;
+@article-title-border-color-gallery: #D35C40;
+@article-title-border-color-video: #4EA8D7;
+@article-title-border-color-link: #57BC8A;
+@article-title-border-color-audio: #A573BE;
+@article-title-border-color-quote: #A573BE;
 
-@article-title-padding-bottom:                  15px;
-@article-title-border-height:                   2px;
-@article-title-border-width:                    70px;
-@article-title-border-color:                    @global-primary-color;
-@article-title-border-color-image:              #F19F35;
-@article-title-border-color-gallery:            #D35C40;
-@article-title-border-color-video:              #4EA8D7;
-@article-title-border-color-link:               #57BC8A;
-@article-title-border-color-audio:              #A573BE;
-@article-title-border-color-quote:              #A573BE;
+article {
 
-
-
-.tm-container-article {
-
-    max-width: 700px;
-
-    .tm-article-title {
-        &::before {
-            left: 50%;
-            margin-left: (@article-title-border-width / -2);
+    .uk-container.tm-pre-content {
+        @media (min-width: @breakpoint-large) {
+            max-width: 1000px;
+        }
+        @media (max-width: @breakpoint-medium-max) {
+            padding: 0;
         }
     }
-}
 
-.tm-pre-content {
+    .uk-container {
+        max-width: 700px;
 
-    @media (min-width: @breakpoint-large) {
-        max-width: 1000px;
-    }
-
-    @media (max-width: @breakpoint-medium-max) {
-        padding: 0;
+        .tm-article-title::before {
+            width: (@article-title-border-width * 2);
+        }
     }
 }
 
@@ -71,14 +65,17 @@
 .tm-overlay-icon-image::before {
     content: '\f03e';
 }
+
 .tm-overlay-icon-gallery::before {
     content: '\f03e\00a0\f03e';
     width: (@overlay-icon-size * 2 + 10);
     margin-left: -(@overlay-icon-size + 5);
 }
+
 .tm-overlay-icon-video::before {
     content: '\f03d';
 }
+
 .tm-overlay-icon-link::before {
     content: '\f0c1';
 }

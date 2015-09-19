@@ -13,20 +13,20 @@ $theme = Theme::get();
 
 <article id="post-<?php the_ID(); ?>" <?php post_class(array('uk-article')); ?>>
 
-    <div class="uk-container uk-container-center uk-text-center tm-pre-content">
+    <div class="uk-container uk-container-center uk-margin-large-bottom uk-text-center tm-pre-content">
         <?php $theme->helpers->renderPostPreContent(); ?>
     </div>
 
-    <div class="uk-container uk-container-center uk-margin-top tm-container-article">
+    <div class="uk-container uk-container-center uk-margin-top">
 
         <?php
         if (is_single()) {
-            the_title('<h1 class="uk-article-title uk-text-center tm-article-title tm-article-title-' . get_post_format() . '">', '</h1>');
+            the_title('<h1 class="uk-article-title tm-article-title tm-article-title-' . get_post_format() . '">', '</h1>');
         } else {
-            the_title('<h1 class="uk-article-title uk-text-center tm-article-title tm-article-title-' . get_post_format() . '"><a href="' . esc_url(get_permalink()) . '" class="uk-link-reset" rel="bookmark">', '</a></h1>');
+            the_title('<h1 class="uk-article-title tm-article-title tm-article-title-' . get_post_format() . '"><a href="' . esc_url(get_permalink()) . '" class="uk-link-reset" rel="bookmark">', '</a></h1>');
         }
         ?>
-        <p class="uk-article-meta uk-text-center">
+        <p class="uk-article-meta">
             <?php printf(
                 '<span class="nst-author uk-link-reset"><a href="%1$s" rel="author"><i class="uk-icon-user"></i> %2$s</a></span>',
                 esc_url(get_author_posts_url(get_the_author_meta('ID'))),
