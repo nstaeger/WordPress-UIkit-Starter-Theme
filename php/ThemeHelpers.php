@@ -106,6 +106,72 @@ class ThemeHelpers
                 echo '</div>';
             }
 
+        } else if ($format == 'video') {
+
+            $args = array(
+                'post_type'      => 'attachment',
+                'post_mime_type' => 'video',
+                'post_parent'    => $post_id,
+                'post_status'    => null,
+                'numberposts'    => -1,
+                'orderby'        => 'menu_order'
+            );
+
+            if ($attachments = get_posts($args)) {
+
+                $poster_args = array(
+                    'post_type'      => 'attachment',
+                    'post_mime_type' => 'image/jpeg',
+                    'post_parent'    => $post_id,
+                    'post_status'    => null,
+                    'numberposts'    => -1,
+                    'orderby'        => 'menu_order'
+                );
+
+                echo '<video controls preload="metadata" class="uk-responsive-width"';
+
+                if ($poster = get_posts($poster_args)) {
+                    echo ' poster="' . wp_get_attachment_url($poster[0]->ID) . '"';
+                }
+
+                echo '>';
+
+                foreach ($attachments as $attachment) {
+                    echo '<source src="' . wp_get_attachment_url($attachment->ID) . '" type="' . get_post_mime_type($attachment->ID) . '">';
+                }
+
+                echo __('Sorry, but the browser you are using, does not support HTML5 videos.');
+                echo '</video>';
+
+            } else if ($image_id = $this->getFirstPostImage($post_id)) {
+                echo wp_get_attachment_image($image_id, 'large');
+            }
+
+        } else if ($format == 'audio') {
+
+            if ($image_id = $this->getFirstPostImage($post_id)) {
+                echo wp_get_attachment_image($image_id, 'large');
+            }
+
+            $args = array(
+                'post_type'      => 'attachment',
+                'post_mime_type' => 'audio',
+                'post_parent'    => $post_id,
+                'post_status'    => null,
+                'numberposts'    => -1,
+                'orderby'        => 'menu_order'
+            );
+
+            if ($attachments = get_posts($args)) {
+                echo '<audio controls preload="metadata" class="uk-responsive-width">';
+
+                foreach ($attachments as $attachment) {
+                    echo '<source src="' . wp_get_attachment_url($attachment->ID) . '" type="' . get_post_mime_type($attachment->ID) . '">';
+                }
+
+                echo __('Sorry, but the browser you are using, does not support HTML5 audio.');;
+                echo '</audio>';
+            }
         } else if ($image_id = $this->getFirstPostImage($post_id)) {
             echo wp_get_attachment_image($image_id, 'large');
         }
