@@ -13,7 +13,7 @@ $nav_footer = wp_nav_menu(array(
 ));
 
 ?>
-<footer id="footer" class="uk-margin-large-top uk-panel uk-panel-box">
+<footer id="footer" class="uk-margin-large-top uk-block uk-block-muted">
     <div class="uk-container uk-container-center">
         <?php get_sidebar('footer'); ?>
 
