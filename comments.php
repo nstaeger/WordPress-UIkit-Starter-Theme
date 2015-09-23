@@ -21,7 +21,7 @@ $form_args = array(
         'author' =>
             '<div class="comment-form-author uk-form-row">'
             . '<label for="author" class="uk-form-label">'
-            . __('Name', 'domainreference')
+            . __('Name')
             . ($req ? ' <span class="required">*</span>' : '')
             . '</label>'
             . '<div class="uk-form-controls">'
@@ -31,7 +31,7 @@ $form_args = array(
         'email'  =>
             '<div class="comment-form-email uk-form-row">'
             . '<label for="email" class="uk-form-label">'
-            . __('Email', 'domainreference')
+            . __('Email')
             . ($req ? ' <span class="required">*</span>' : '')
             . '</label>'
             . '<div class="uk-form-controls">'
@@ -41,7 +41,7 @@ $form_args = array(
         'url'    =>
             '<div class="comment-form-url uk-form-row">'
             . '<label for="url" class="uk-form-label">'
-            . __('Website', 'domainreference')
+            . __('Website')
             . '</label>'
             . '<div class="uk-form-controls">'
             . '<input id="url" class="uk-width-1-1" name="url" type="url" value="' . esc_attr($commenter['comment_author_url']) . '" size="30" />'
@@ -70,7 +70,7 @@ $form_args = array(
 
     <?php if (have_comments()) : ?>
 
-        <h2 class="nst-comments-title">Comments</h2>
+        <h2 class="nst-comments-title"><?= __('Comments'); ?></h2>
 
         <?php if (get_comment_pages_count() > 1 && get_option('page_comments')) : ?>
             <nav class="nst-comments-navigation">
@@ -95,7 +95,7 @@ $form_args = array(
 
         <?php if (get_comment_pages_count() > 1 && get_option('page_comments')) : ?>
             <nav class="nst-comments-navigation">
-                <h3 class="uk-hidden">Comment Navigation</h3>
+                <h3 class="uk-hidden"><?= __('Comment Navigation'); ?></h3>
                 <ul class="uk-pagination">
                     <li class="uk-pagination-previous"><?php previous_comments_link('<i class="uk-icon-angle-double-left"></i> Older Comments'); ?></li>
                     <li class="uk-pagination-next"><?php next_comments_link('Newer Comments <i class="uk-icon-angle-double-right"></i>'); ?></li>
