@@ -3,16 +3,18 @@
  * E.g.: widgets
  */
 
-.widget_search {
-    form.search-form {
+.widget_search,
+.post_notification_widget {
+    form {
         &:extend(.uk-form all);
 
-        .search-field {
-            .uk-width-1-1;
+        input {
+            .uk-width-1-1();
         }
 
-        .search-submit {
-            .uk-button;
+        input[type="submit"] {
+            .uk-button();
+            margin-top: 5px;
         }
     }
 }
@@ -20,7 +22,7 @@
 .uk-comment {
     .uk-comment-header {
         img.avatar {
-            .uk-comment-avatar;
+            .uk-comment-avatar();
         }
     }
 }
@@ -30,6 +32,6 @@
     &:extend(.uk-form-horizontal all);
 
     .form-submit input {
-        .uk-button;
+        .uk-button();
     }
 }
