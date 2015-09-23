@@ -18,7 +18,7 @@ get_template_part('elements/base/navigation');
         if (have_posts()) {
             while (have_posts()) {
                 the_post();
-                get_template_part('elements/content/content'/*, get_post_format()*/);
+                get_template_part('elements/content/article', get_post_format());
             }
         } else {
             echo '<p>' . __('Nothing found here. Sorry!', 'uikit-starter') . '</p>';

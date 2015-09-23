@@ -5,6 +5,7 @@
  */
 class ThemeHelpers
 {
+
     /**
      * Gets the first image attached to the post.
      *
@@ -25,7 +26,6 @@ class ThemeHelpers
         } else {
             return false;
         }
-
     }
 
     /**
@@ -47,112 +47,6 @@ class ThemeHelpers
         );
 
         return get_posts($args);
-    }
-
-    /**
-     * Get the Media to be displayed before the content.
-     */
-    public function renderPostPreContent()
-    {
-        $post_id = get_the_ID();
-        $format = get_post_format();
-
-        if ($format == 'gallery') {
-
-            $attachments = $this->getPostImages($post_id);
-
-            if ($attachments && is_array($attachments) && !empty($attachments)) {
-                echo '<div class="uk-slidenav-position" data-uk-slideshow="{animation: \'swipe\', autoplay: true, autoplayInterval: 5000}">';
-                echo '<ul class="uk-slideshow">';
-
-                foreach ($attachments as $attachment) {
-                    echo '<li>';
-                    echo wp_get_attachment_image($attachment->ID, 'large');
-                    echo '</li>';
-                }
-
-                echo '</ul>';
-                echo '<a href="" class="uk-slidenav uk-slidenav-contrast uk-slidenav-previous" data-uk-slideshow-item="previous"></a>';
-                echo '<a href="" class="uk-slidenav uk-slidenav-contrast uk-slidenav-next" data-uk-slideshow-item="next"></a>';
-                echo '<ul class="uk-dotnav uk-dotnav-contrast uk-position-bottom uk-flex-center">';
-
-                foreach ($attachments as $index => $attachment) {
-                    echo '<li data-uk-slideshow-item="' . $index . '"><a href=""></a></li>';
-                }
-
-                echo '</ul>';
-                echo '</div>';
-            }
-
-        } else if ($format == 'video') {
-
-            $args = array(
-                'post_type'      => 'attachment',
-                'post_mime_type' => 'video',
-                'post_parent'    => $post_id,
-                'post_status'    => null,
-                'numberposts'    => -1,
-                'orderby'        => 'menu_order'
-            );
-
-            if ($attachments = get_posts($args)) {
-
-                $poster_args = array(
-                    'post_type'      => 'attachment',
-                    'post_mime_type' => 'image/jpeg',
-                    'post_parent'    => $post_id,
-                    'post_status'    => null,
-                    'numberposts'    => -1,
-                    'orderby'        => 'menu_order'
-                );
-
-                echo '<video controls preload="metadata" class="uk-responsive-width"';
-
-                if ($poster = get_posts($poster_args)) {
-                    echo ' poster="' . wp_get_attachment_url($poster[0]->ID) . '"';
-                }
-
-                echo '>';
-
-                foreach ($attachments as $attachment) {
-                    echo '<source src="' . wp_get_attachment_url($attachment->ID) . '" type="' . get_post_mime_type($attachment->ID) . '">';
-                }
-
-                echo __('Sorry, but the browser you are using, does not support HTML5 videos.');
-                echo '</video>';
-
-            } else if ($image_id = $this->getFirstPostImage($post_id)) {
-                echo wp_get_attachment_image($image_id, 'large');
-            }
-
-        } else if ($format == 'audio') {
-
-            if ($image_id = $this->getFirstPostImage($post_id)) {
-                echo wp_get_attachment_image($image_id, 'large');
-            }
-
-            $args = array(
-                'post_type'      => 'attachment',
-                'post_mime_type' => 'audio',
-                'post_parent'    => $post_id,
-                'post_status'    => null,
-                'numberposts'    => -1,
-                'orderby'        => 'menu_order'
-            );
-
-            if ($attachments = get_posts($args)) {
-                echo '<audio controls preload="metadata" class="uk-responsive-width">';
-
-                foreach ($attachments as $attachment) {
-                    echo '<source src="' . wp_get_attachment_url($attachment->ID) . '" type="' . get_post_mime_type($attachment->ID) . '">';
-                }
-
-                echo __('Sorry, but the browser you are using, does not support HTML5 audio.');;
-                echo '</audio>';
-            }
-        } else if ($image_id = $this->getFirstPostImage($post_id)) {
-            echo wp_get_attachment_image($image_id, 'large');
-        }
     }
 
     /**
