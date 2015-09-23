@@ -22,7 +22,7 @@ if ($attachments = get_posts($args)) :
 
     ?>
 
-    <div class="uk-container uk-container-center uk-margin-large-bottom uk-text-center tm-pre-content">
+    <div class="uk-container uk-container-center uk-margin-large-bottom uk-text-center tm-container-collapse tm-pre-content">
         <video controls preload="metadata" class="uk-responsive-width" <?= $poster = get_posts($poster_args) ? 'poster="' . wp_get_attachment_url($poster[0]->ID) . '"' : '' ?>>
             <?php foreach ($attachments as $attachment) : ?>
                 <source src="<?= wp_get_attachment_url($attachment->ID) ?>" type="<?= get_post_mime_type($attachment->ID) ?>">

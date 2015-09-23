@@ -5,7 +5,7 @@ $attachments = $theme->helpers->getPostImages(get_the_ID());
 
 if ($attachments && is_array($attachments) && !empty($attachments)) : ?>
 
-    <div class="uk-container uk-container-center uk-margin-large-bottom uk-text-center tm-pre-content">
+    <div class="uk-container uk-container-center uk-margin-large-bottom uk-text-center tm-container-collapse tm-pre-content">
         <div class="uk-slidenav-position" data-uk-slideshow="{animation: 'scroll', autoplay: true, autoplayInterval: 5000, maxHeight: 630}">
             <ul class="uk-slideshow">
 

@@ -15,7 +15,7 @@ $args = array(
 
 if ($image_id || $attachments = get_posts($args)): ?>
 
-    <div class="uk-container uk-container-center uk-margin-large-bottom uk-text-center tm-pre-content">
+    <div class="uk-container uk-container-center uk-margin-large-bottom uk-text-center tm-container-collapse tm-pre-content">
         <?php if ($image_id) : ?>
             <?= wp_get_attachment_image($image_id, 'large'); ?>
         <?php endif; ?>

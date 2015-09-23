@@ -10,7 +10,7 @@ get_template_part('elements/base/header');
 get_template_part('elements/base/navigation');
 
 ?>
-    <div class="uk-container uk-container-center uk-margin-large-top">
+    <div class="uk-container uk-container-center uk-margin-large-top tm-container-collapse">
         <?php
 
         $theme->helpers->wrapContentBefore();

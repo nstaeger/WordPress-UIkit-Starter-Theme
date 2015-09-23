@@ -9,18 +9,15 @@
 @article-title-border-color-audio: #A573BE;
 @article-title-border-color-quote: #A573BE;
 
+.tm-container-collapse {
+    @media (max-width: @breakpoint-medium-max) {
+        padding: 0;
+    }
+}
+
 article {
 
-    .uk-container.tm-pre-content {
-        @media (min-width: @breakpoint-large) {
-            max-width: 1000px;
-        }
-        @media (max-width: @breakpoint-medium-max) {
-            padding: 0;
-        }
-    }
-
-    .uk-container {
+    .uk-container:not(.tm-pre-content) {
         max-width: 700px;
 
         .tm-article-title::before {
