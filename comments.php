@@ -58,10 +58,7 @@ $form_args = array(
         . '<textarea id="comment" class="uk-width-1-1" name="comment" cols="45" rows="8" aria-required="true" required ></textarea>'
         . '</div>'
         . '</div>',
-    'comment_notes_after' =>
-        '<p class="form-allowed-tags">'
-        . sprintf(__('You may use these <abbr title="HyperText Markup Language">HTML</abbr> tags and attributes: %s'), ' <pre><code>' . allowed_tags() . '</code></pre>')
-        . '</p>'
+    'comment_notes_after' => ''
 );
 
 ?>
