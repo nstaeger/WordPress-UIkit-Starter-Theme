@@ -35,7 +35,7 @@ article {
     position: relative;
     padding-bottom: @article-title-padding-bottom;
 
-    &::before {
+    &:before {
         content: "";
         position: absolute;
         bottom: 0;
@@ -44,40 +44,47 @@ article {
         background: @article-title-border-color;
     }
 
-    &.tm-article-title-image::before {
+    &.tm-article-title-image:before {
         background: @article-title-border-color-image;
     }
-    &.tm-article-title-gallery::before {
+    &.tm-article-title-gallery:before {
         background: @article-title-border-color-gallery;
     }
-    &.tm-article-title-video::before {
+    &.tm-article-title-video:before {
         background: @article-title-border-color-video;
     }
-    &.tm-article-title-link::before {
+    &.tm-article-title-link:before {
         background: @article-title-border-color-link;
     }
-    &.tm-article-title-audio::before {
+    &.tm-article-title-audio:before {
         background: @article-title-border-color-audio;
     }
-    &.tm-article-title-quote::before {
+    &.tm-article-title-quote:before {
         background: @article-title-border-color-quote;
     }
 }
 
-.tm-overlay-icon-image::before {
-    content: '\f03e';
-}
+.tm-icon {
 
-.tm-overlay-icon-gallery::before {
-    content: '\f03e\00a0\f03e';
-    width: (@overlay-icon-size * 2 + 10);
-    margin-left: -(@overlay-icon-size + 5);
-}
+    &:before {
+        content: '\f039';
+    }
 
-.tm-overlay-icon-video::before {
-    content: '\f03d';
-}
-
-.tm-overlay-icon-link::before {
-    content: '\f0c1';
+    &.tm-icon-image:before {
+        content: '\f03e';
+    }
+    &.tm-icon-gallery:before {
+        content: '\f03e\00a0\f03e';
+        width: (@overlay-icon-size * 2 + 10);
+        margin-left: -(@overlay-icon-size + 5);
+    }
+    &.tm-icon-video:before {
+        content: '\f03d';
+    }
+    &.tm-icon-link:before {
+        content: '\f0c1';
+    }
+    &.tm-icon-audio:before {
+        content: '\f001';
+    }
 }
