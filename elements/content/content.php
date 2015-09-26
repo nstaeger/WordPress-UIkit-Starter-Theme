@@ -37,10 +37,10 @@
         <?php if (!post_password_required() && (comments_open() || get_comments_number())) : ?>
             <span class="nst-comments uk-margin-small-left uk-link-reset">
                 <?php comments_popup_link(
-                    '<i class="uk-icon-comment"></i> ' . __('Leave a comment', 'uikit-starter'), '<i class="uk-icon-comment"></i> 1', '<i class="uk-icon-comment"></i> %'); ?>
+                    '<i class="uk-icon-comment"></i> ' . __('Leave a comment'), '<i class="uk-icon-comment"></i> 1', '<i class="uk-icon-comment"></i> %'); ?>
             </span>
         <?php endif; ?>
-        <?php edit_post_link('<i class="uk-icon-edit"></i> Edit', '<span class="nst-edit-link uk-margin-small-left uk-link-reset">', '</span>'); ?>
+        <?php edit_post_link('<i class="uk-icon-edit"></i> ' . __('Edit'), '<span class="nst-edit-link uk-margin-small-left uk-link-reset">', '</span>'); ?>
         <?php if (is_single()) : ?>
             <br/ >
             <?php the_tags('<span class="nst-tag-list uk-link-reset"><i class="uk-icon-tag"></i> ', ', ', '</span>'); ?>
