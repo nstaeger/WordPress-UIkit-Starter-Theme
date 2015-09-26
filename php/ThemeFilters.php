@@ -10,6 +10,8 @@ class ThemeFilters
     {
         // Add Filter for the title
         add_filter('wp_title', array($this, 'titleFilter'), 10, 2);
+
+        add_filter('comment_reply_link_args', array($this, 'commentReplyLinkArgsFilter'), 1);
     }
 
     /**
@@ -36,6 +38,21 @@ class ThemeFilters
         }
 
         return $title;
+    }
+
+    /**
+     * Filter the comment reply link args to add an icon.
+     *
+     * @param array $args the original args
+     *
+     * @return array
+     */
+    public function commentReplyLinkArgsFilter($args)
+    {
+        $args['reply_text'] = '<i class="uk-icon-reply"></i> ' . $args['reply_text'];
+        $args['reply_to_text'] = '<i class="uk-icon-reply"></i> ' . $args['reply_to_text'];
+
+        return $args;
     }
 
 } 

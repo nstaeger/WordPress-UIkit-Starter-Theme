@@ -100,17 +100,18 @@ class WordpressUikitCommentsWalker extends Walker_Comment
                     </li>
                     <?php if ($depth < $args['max_depth']) : ?>
                         <li>
-                            <span class="uk-margin-small-left">
-                                <i class="uk-icon-reply"></i>
-                                <?php comment_reply_link(array_merge($args, array('add_below' => 'uk-comment', 'depth' => $depth))); ?>
-                            </span>
+                            <?php
+                            // the reply-icon is being set using a filter
+                            comment_reply_link(array_merge($args, array(
+                                'add_below' => 'uk-comment',
+                                'depth'     => $depth
+                            )));
+                            ?>
                         </li>
                     <?php endif; ?>
                     <?php if (current_user_can('edit_comment')) : ?>
                         <li>
-                            <span class="uk-margin-small-left">
-                                <?php edit_comment_link(__('Edit'), '<i class="uk-icon-edit"></i> '); ?>
-                            </span>
+                            <?php edit_comment_link('<i class="uk-icon-edit"></i> ' . __('Edit This')); ?>
                         </li>
                     <?php endif; ?>
                 </ul>
