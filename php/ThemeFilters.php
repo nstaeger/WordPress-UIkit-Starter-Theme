@@ -13,6 +13,9 @@ class ThemeFilters
 
         // Reduce the number of words in the excerpt
         add_filter('excerpt_length', array($this, 'customExcerptLength'), 999);
+
+        // Add a icon to the comment reply link
+        add_filter('comment_reply_link_args', array($this, 'commentReplyLinkArgsFilter'), 1);
     }
 
     /**
@@ -44,6 +47,21 @@ class ThemeFilters
     public function customExcerptLength($length)
     {
         return 20;
+    }
+
+    /**
+     * Filter the comment reply link args to add an icon.
+     *
+     * @param array $args the original args
+     *
+     * @return array
+     */
+    public function commentReplyLinkArgsFilter($args)
+    {
+        $args['reply_text'] = '<i class="uk-icon-reply"></i> ' . $args['reply_text'];
+        $args['reply_to_text'] = '<i class="uk-icon-reply"></i> ' . $args['reply_to_text'];
+
+        return $args;
     }
 
 } 
