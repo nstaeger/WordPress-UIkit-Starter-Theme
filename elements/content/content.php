@@ -5,7 +5,6 @@
  * Used for both single and index/archive/search.
  *
  * TODO Categories: only print if any set
- * TODO Localize
  */
 ?>
 
