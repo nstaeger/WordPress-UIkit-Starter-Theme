@@ -13,17 +13,17 @@ $nav_footer = wp_nav_menu(array(
 ));
 
 ?>
-<footer id="footer" class="uk-margin-large-top uk-panel uk-panel-box">
+<footer id="footer" class="uk-margin-top uk-block uk-block-muted">
     <div class="uk-container uk-container-center">
         <?php get_sidebar('footer'); ?>
 
         <?php if ($nav_footer) : ?>
-            <nav class="uk-margin-bottom uk-text-center">
+            <nav class="uk-text-center">
                 <?= $nav_footer ?>
             </nav>
         <?php endif; ?>
 
-        <div class="uk-margin-bottom uk-text-center uk-text-muted">
+        <div class="uk-margin-top uk-text-center uk-text-muted">
             <div class="uk-panel">
                 <p>uikit-starter theme made by
                     <a href="http://www.nstaeger.de/" class="uk-link-reset" target="_blank">nstaeger.de</a>

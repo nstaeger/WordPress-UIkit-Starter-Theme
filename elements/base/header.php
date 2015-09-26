@@ -14,9 +14,9 @@ if ($color = get_header_textcolor()) {
 }
 
 ?>
-<header id="header" class="uk-cover-background" <?= $header_style ?>>
+<header id="header" class="uk-cover-background uk-block uk-block-secondary uk-contrast" <?= $header_style ?>>
     <div class="uk-container uk-container-center">
-        <h1 class="uk-margin-large-top" <?= $text_style ?>>
+        <h1 <?= $text_style ?>>
             <a href="<?= esc_url(home_url('/')); ?>" title="<?= esc_attr(get_bloginfo('name', 'display')); ?>" class="uk-link-reset">
                 <?php bloginfo('name'); ?>
             </a>
