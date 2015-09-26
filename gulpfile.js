@@ -2,24 +2,28 @@
  * Popular Tasks
  * -------------
  *
+ * gulp build
+ * gulp clean
  * gulp compile-less
  * gulp copy-font
  * gulp minify
  * gulp watch
  */
-var gulp   = require('gulp'),
+
+var del = require('del'),
+    gulp = require('gulp'),
     concat = require('gulp-concat'),
-    less   = require('gulp-less'),
+    less = require('gulp-less'),
     uglify = require('gulp-uglify');
 
 
-gulp.task('default', ['compile-less', 'copy-font', 'minify']);
+gulp.task('default', ['compile', 'copy-font', 'minify']);
 
 
 /**
  * Compile all less-files.
  */
-gulp.task('compile', function() {
+gulp.task('compile', function () {
     return gulp.src('less/main.less')
         .pipe(less({compress: true}))
         .pipe(gulp.dest('css'));
@@ -28,7 +32,7 @@ gulp.task('compile', function() {
 /**
  * Copies the UIkit fonts to the theme folder
  */
-gulp.task('copy-font', function() {
+gulp.task('copy-font', function () {
     return gulp.src('bower_components/uikit/fonts/**')
         .pipe(gulp.dest('fonts'));
 });
@@ -36,7 +40,7 @@ gulp.task('copy-font', function() {
 /**
  * Minifies all JS-files to an 'all.min.js'
  */
-gulp.task('minify', function() {
+gulp.task('minify', function () {
     return gulp.src([
         'bower_components/jquery/dist/jquery.js',
         'bower_components/uikit/js/uikit.js',
@@ -52,12 +56,37 @@ gulp.task('minify', function() {
         .pipe(gulp.dest('js'));
 });
 
+/**
+ * Clean the dist folder
+ */
+gulp.task('clean', function (cb) {
+    del(['_dist'], cb);
+});
 
+/**
+ * Build the theme to the _dist-folder
+ */
+gulp.task('build', ['clean', 'compile', 'copy-font', 'minify'], function () {
+    return gulp.src([
+        '**',
+        '!_build{/**,}',
+        '!_dist{/**,}',
+        '!bower_components{/**,}',
+        '!less{/**,}',
+        '!node_modules{/**,}',
+        '!.gitignore',
+        '!bower.json',
+        '!gulpfile.js',
+        '!package.json',
+        '!README.md'
+    ])
+        .pipe(gulp.dest('_dist'));
+});
 
 /**
  * Watch the less-directory for changes and compile-less if needed.
  */
-gulp.task('watch', ['compile', 'minify'], function() {
+gulp.task('watch', ['compile', 'minify'], function () {
     gulp.watch('less/**/*.less', ['compile']);
     gulp.watch(['js/**', '!js/all.min.js'], ['minify']);
 });
