@@ -19,7 +19,7 @@ gulp.task('default', ['compile-less', 'copy-font', 'minify']);
 /**
  * Compile all less-files.
  */
-gulp.task('compile-less', function() {
+gulp.task('compile', function() {
     return gulp.src('less/main.less')
         .pipe(less({compress: true}))
         .pipe(gulp.dest('css'));
@@ -38,15 +38,15 @@ gulp.task('copy-font', function() {
  */
 gulp.task('minify', function() {
     return gulp.src([
-            'bower_components/jquery/dist/jquery.js',
-            'bower_components/uikit/js/uikit.js',
-            'bower_components/uikit/js/components/grid.js',
-            'bower_components/uikit/js/components/lightbox.js',
-            'bower_components/uikit/js/components/slideshow.js',
-            'bower_components/uikit/js/components/slideshow-fx.js',
-            'js/**',
-            '!js/all.min.js'
-        ])
+        'bower_components/jquery/dist/jquery.js',
+        'bower_components/uikit/js/uikit.js',
+        'bower_components/uikit/js/components/grid.js',
+        'bower_components/uikit/js/components/lightbox.js',
+        'bower_components/uikit/js/components/slideshow.js',
+        'bower_components/uikit/js/components/slideshow-fx.js',
+        'js/**',
+        '!js/all.min.js'
+    ])
         .pipe(uglify())
         .pipe(concat('all.min.js'))
         .pipe(gulp.dest('js'));
@@ -57,7 +57,7 @@ gulp.task('minify', function() {
 /**
  * Watch the less-directory for changes and compile-less if needed.
  */
-gulp.task('watch', function() {
-    gulp.watch('less/**.less', ['compile-less']);
+gulp.task('watch', ['compile', 'minify'], function() {
+    gulp.watch('less/**/*.less', ['compile']);
     gulp.watch(['js/**', '!js/all.min.js'], ['minify']);
 });
