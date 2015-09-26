@@ -26,7 +26,7 @@ $iconClass = 'tm-icon' . (get_post_format() ? ' tm-icon-' . get_post_format() : 
         ); ?>
         <?php if (!post_password_required() && (comments_open() || get_comments_number())) : ?>
             <span class="uk-margin-small-left uk-link-reset">
-                <?php comments_popup_link('<i class="uk-icon-comment"></i> ' . __('Leave a comment', 'uikit-starter'), '<i class="uk-icon-comment"></i> 1', '<i class="uk-icon-comment"></i> %'); ?>
+                <?php comments_popup_link('<i class="uk-icon-comment"></i> ' . __('Leave a comment'), '<i class="uk-icon-comment"></i> 1', '<i class="uk-icon-comment"></i> %'); ?>
             </span>
         <?php endif; ?>
         <?php edit_post_link('<i class="uk-icon-edit"></i> Edit', '<span class="nst-edit-link uk-margin-small-left uk-link-reset">', '</span>'); ?>
