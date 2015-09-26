@@ -66,6 +66,8 @@ article {
 
 .tm-icon {
 
+    &:extend([class*='uk-icon-'] all);
+
     &:before {
         content: '\f039';
     }
@@ -73,10 +75,14 @@ article {
     &.tm-icon-image:before {
         content: '\f03e';
     }
-    &.tm-icon-gallery:before {
-        content: '\f03e\00a0\f03e';
-        width: (@overlay-icon-size * 2 + 10);
-        margin-left: -(@overlay-icon-size + 5);
+    &.tm-icon-gallery {
+        &:before {
+            content: '\f03e\00a0\f03e';
+        }
+        &.uk-overlay-icon:before {
+            width: (@overlay-icon-size * 2 + 10);
+            margin-left: -(@overlay-icon-size + 5);
+        }
     }
     &.tm-icon-video:before {
         content: '\f03d';
