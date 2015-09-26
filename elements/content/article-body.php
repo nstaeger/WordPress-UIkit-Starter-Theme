@@ -29,7 +29,7 @@ $iconClass = 'tm-icon' . (get_post_format() ? ' tm-icon-' . get_post_format() : 
                 <?php comments_popup_link('<i class="uk-icon-comment"></i> ' . __('Leave a comment'), '<i class="uk-icon-comment"></i> 1', '<i class="uk-icon-comment"></i> %'); ?>
             </span>
         <?php endif; ?>
-        <?php edit_post_link('<i class="uk-icon-edit"></i> Edit', '<span class="nst-edit-link uk-margin-small-left uk-link-reset">', '</span>'); ?>
+        <?php edit_post_link('<i class="uk-icon-edit"></i> ' . __('Edit'), '<span class="nst-edit-link uk-margin-small-left uk-link-reset">', '</span>'); ?>
 
         <br>
         <span class="uk-link-reset">
