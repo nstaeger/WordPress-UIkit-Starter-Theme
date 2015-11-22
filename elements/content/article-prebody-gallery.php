@@ -6,11 +6,11 @@ $attachments = $theme->helpers->getPostImages(get_the_ID());
 if ($attachments && is_array($attachments) && !empty($attachments)) : ?>
 
     <div class="uk-container uk-container-center uk-margin-large-bottom uk-text-center tm-container-collapse tm-pre-content">
-        <div class="uk-slidenav-position" data-uk-slideshow="{animation: 'scroll', autoplay: true, autoplayInterval: 5000, maxHeight: 630}">
+        <div class="uk-slidenav-position" data-uk-slideshow="{animation: 'scroll', autoplay: true, autoplayInterval: 5000}">
             <ul class="uk-slideshow">
 
                 <?php foreach ($attachments as $attachment) : ?>
-                    <li>
+                    <li style="max-height: 630px">
                         <?= wp_get_attachment_image($attachment->ID, 'large') ?>
                     </li>
                 <?php endforeach; ?>
