@@ -13,7 +13,7 @@ class UIkitGallery
         'type'       => 'grid',
         'showdotnav' => true,
         'order'      => 'ASC',
-        'orderny'    => 'menu_order ID'
+        'orderby'    => 'menu_order ID'
     );
 
     /**
@@ -46,27 +46,23 @@ class UIkitGallery
         $this->post = get_post();
         $this->settings = array_merge($this->defaults, $attributes);
 
-        // If the IDs of the images were passed
+        $arguments = array(
+            'post_status' => 'inherit',
+            'post_type' => 'attachment',
+            'post_mime_type' => 'image',
+            'order' => $this->settings['order'],
+            'orderby' => $this->settings['orderby']
+        );
+
+
         if (!empty($this->settings['ids'])) {
-            $this->attachments = get_posts(array(
-                    'include'        => $this->settings['ids'],
-                    'post_status'    => 'inherit',
-                    'post_type'      => 'attachment',
-                    'post_mime_type' => 'image',
-                    'order'          => $this->settings['order'],
-                    'orderby'        => $this->settings['orderby'])
-            );
-        } // otherwise get the images attached to the post
-        else {
-            $this->attachments = get_posts(array(
-                    'post_parent'    => $this->post ? $this->post->ID : 0,
-                    'post_status'    => 'inherit',
-                    'post_type'      => 'attachment',
-                    'post_mime_type' => 'image',
-                    'order'          => $this->settings['order'],
-                    'orderby'        => $this->settings['orderby'])
-            );
+            $arguments['include'] = $this->settings['ids'];
         }
+        else {
+            $arguments['include'] = $this->post ? $this->post->ID : 0;
+        }
+
+        $this->attachments = get_posts($arguments);
 
         // If no images were found...
         if (empty($this->attachments)) {
