@@ -15,7 +15,7 @@ $iconClass = 'tm-icon' . (get_post_format() ? ' tm-icon-' . get_post_format() : 
 ?>
 
 <div>
-    <div class="uk-panel uk-panel-box">
+    <div class="uk-panel uk-panel-box tm-grid-content">
 
         <?php if ($imageID = $theme->helpers->getFirstPostImage(get_the_ID())) : ?>
             <div class="uk-text-center uk-panel-teaser">
@@ -57,12 +57,12 @@ $iconClass = 'tm-icon' . (get_post_format() ? ' tm-icon-' . get_post_format() : 
         </p>
 
         <?php if ($excerpt = get_the_excerpt()) : ?>
-            <div class="uk-margin">
+            <div class="tm-excerpt">
                 <?= $excerpt; ?>
             </div>
         <?php endif; ?>
 
-        <p>
+        <p class="tm-read-more">
             <a href="<?= $postLink ?>" class="uk-button uk-button-link"><?= __('Read more') ?></a>
         </p>
     </div>
